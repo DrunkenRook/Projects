@@ -93,20 +93,61 @@ class createGrid
   
 }
 
+class riverGrid extends createGrid
+{
+  riverGrid(n) : super(n); //calls createGrid constructor through riverGrid (copilot wanted to put that so I looked it up to figure out whgat it was)
+  riverGenerator()
+  {
+    int riverPos = Random().nextInt(10);
+    int temp = grid [0][riverPos];
+    grid[0][riverPos] = 0;
+    if (checkPos(0, riverPos-1))
+    {
+      grid[0][riverPos-1] += temp~/2;//learned about ~/ by looking up how to divide while maintaining the integer type
+    }
+    if (checkPos(0, riverPos+1))
+    {
+      grid[0][riverPos+1] += temp~/2;
+    }
 
+    for (int i = 1; i < 10; i++)
+    {
+      if (checkPos(i, riverPos))
+      {
+        temp = grid[i][riverPos];
+        grid[i][riverPos] = 0;
+        if (checkPos(i, riverPos-1))
+        {
+          grid[i][riverPos-1] += temp~/2;
+        }
+        if (checkPos(i, riverPos+1))
+        {
+          grid[i][riverPos+1] += temp~/2;
+        }
+      }
+
+    }
+  }
+
+}
 
 void main() 
 {
-  createGrid temp = createGrid(10);
-  for (int i = 0; i < temp.grid.length; i++) 
+  riverGrid riverTemp = riverGrid(10);
+  for (int i = 0; i < riverTemp.grid.length; i++) 
   {
-    print(temp.grid[i]);
+    print(riverTemp.grid[i]);
   }
   print("\n _________________________________________ \n");
-  temp.cityPopulate(temp.grid);
-  for (int i = 0; i < temp.grid.length; i++)
+  riverTemp.cityPopulate(riverTemp.grid);
+  for (int i = 0; i < riverTemp.grid.length; i++)
   {
-    print(temp.grid[i]);
+    print(riverTemp.grid[i]);
   }
-
+  print("\n _________________________________________ \n");
+  riverTemp.riverGenerator();
+  for (int i = 0; i < riverTemp.grid.length; i++)
+  {
+    print(riverTemp.grid[i]);
+  }
 }
