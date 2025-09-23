@@ -93,9 +93,9 @@ class createGrid
   
 }
 
-class riverGrid extends createGrid
+class RiverGrid extends createGrid
 {
-  riverGrid(n) : super(n); //calls createGrid constructor through riverGrid (copilot wanted to put that so I looked it up to figure out whgat it was)
+  RiverGrid(n) : super(n); //calls createGrid constructor through RiverGrid (copilot wanted to put that so I looked it up to figure out whgat it was)
   riverGenerator()
   {
     int riverPos = Random().nextInt(10);
@@ -133,7 +133,7 @@ class riverGrid extends createGrid
 
 void main() 
 {
-  riverGrid riverTemp = riverGrid(10);
+  RiverGrid riverTemp = RiverGrid(10);
   for (int i = 0; i < riverTemp.grid.length; i++) 
   {
     print(riverTemp.grid[i]);
