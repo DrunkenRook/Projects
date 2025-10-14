@@ -1,0 +1,24 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1759003553
+enemyFlyingAlt_1.png::CompressedTexture2D::8509061954502475030::1758912946::1758912946::1::::<><><>0<>0<>ec3f942c0d2caa71a24e8e8ef1ec38a3<>res://.godot/imported/enemyFlyingAlt_1.png-122fb22640a174075ff6bc1c8de9ef4b.ctex::
+enemyFlyingAlt_2.png::CompressedTexture2D::1599006481577073404::1758912950::1758912950::1::::<><><>0<>0<>d94fbcf6d384f2a686933c4ea6e73737<>res://.godot/imported/enemyFlyingAlt_2.png-36b0a0d446f525b984c4e8bd335e811c.ctex::
+enemySwimming_1.png::CompressedTexture2D::6649930992459446903::1758912963::1758912964::1::::<><><>0<>0<>e56992bbc0125ba8046b2bc41c6f7d00<>res://.godot/imported/enemySwimming_1.png-7968befc57e9c94b5179ed7bf6a69e9f.ctex::
+enemySwimming_2.png::CompressedTexture2D::2747214794874080905::1758912963::1758912964::1::::<><><>0<>0<>3cf0071af4070fc61760cf7dd315ca29<>res://.godot/imported/enemySwimming_2.png-bf5cf15c885fdd416bd5ca8e6aae9642.ctex::
+enemyWalking_1.png::CompressedTexture2D::4078737523443744399::1758912963::1758912964::1::::<><><>0<>0<>a045f5a9b07f581889b1cb720697a4d6<>res://.godot/imported/enemyWalking_1.png-cb9fd27cc5ab93dedf6a051d16055638.ctex::
+enemyWalking_2.png::CompressedTexture2D::3180461725907438804::1758912963::1758912964::1::::<><><>0<>0<>344bcd023a049f58c83a2a492020d071<>res://.godot/imported/enemyWalking_2.png-921b64c7dfb8652228a4ffd707d9669c.ctex::
+gameover.wav::AudioStreamWAV::659231642549594780::1758917631::1758917631::1::::<><><>0<>0<>e531ab8210a886ebf92bc4e834108747<>res://.godot/imported/gameover.wav-3be9b8c5e5110c6cb40d0384ce2294af.sample::
+House In a Forest Loop.ogg::AudioStreamOggVorbis::585263690854344848::1758917631::1758917631::1::::<><><>0<>0<>751d4bd1d4c4ad44544a85bc76c04f7a<>res://.godot/imported/House In a Forest Loop.ogg-2a96380979736f300c7c2842c688d7ab.oggvorbisstr::
+hud.gd::GDScript::1028760417862250277::1758920669::0::1::::<>CanvasLayer<><>0<>0<><>::
+hud.tscn::PackedScene::2834860793358236264::1758920859::0::1::::<><><>0<>0<><>::uid://dj4cx05dc6vjj::::res://Xolonium-Regular.ttf<>uid://owlsfbvkr2yb::::res://hud.gd
+icon.svg::CompressedTexture2D::2533361741874130331::1758561433::1758561455::1::::<><><>0<>0<>9aeb80fa83aacd4da956704d628c118e<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+main.gd::GDScript::247320359552364791::1758921006::0::1::::<>Node<><>0<>0<><>::
+main.tscn::PackedScene::2820434950328576382::1758921034::0::1::::<><><>0<>0<><>::uid://dr2lhxx651eh::::res://main.gd<>uid://4oy3cbplegs5::::res://mob.tscn<>uid://bhis6a80y03c6::::res://Player.tscn<>uid://bgnh0jalum64s::::res://hud.tscn
+mob.gd::GDScript::6284046691084439907::1758915837::0::1::::<>RigidBody2D<><>0<>0<><>::
+mob.tscn::PackedScene::2065885071403408778::1758920857::0::1::::<><><>0<>0<><>::uid://cvsblirmfjvm6::::res://mob.gd<>uid://dth4ailbfdwo1::::res://enemyFlyingAlt_1.png<>uid://w1tnya1hkhkm::::res://enemyFlyingAlt_2.png<>uid://c10jnlanwir40::::res://enemySwimming_1.png<>uid://bfe1hxuo187e0::::res://enemySwimming_2.png<>uid://byd1hgbcw61nv::::res://enemyWalking_1.png<>uid://blkv0fnfy50iq::::res://enemyWalking_2.png
+player.gd::GDScript::208832198895478615::1758920848::0::1::::<>Area2D<><>0<>0<><>::
+Player.tscn::PackedScene::2895405928820172539::1758920856::0::1::::<><><>0<>0<><>::uid://dp82jpy733m6h::::res://playerGrey_up1.png<>uid://c8fo21475cfv::::res://player.gd<>uid://b3qqw7da8j5b0::::res://playerGrey_up2.png<>uid://dsik4eqnilwtx::::res://playerGrey_walk1.png<>uid://ddvypowtfrt6h::::res://playerGrey_walk2.png
+playerGrey_up1.png::CompressedTexture2D::8281875428901624693::1758906392::1758906392::1::::<><><>0<>0<>fda10013668e7ba31f08cfb409e46a55<>res://.godot/imported/playerGrey_up1.png-3aa61131c0882580ef256c2e63b2c4f5.ctex::
+playerGrey_up2.png::CompressedTexture2D::4385750794399240779::1758906396::1758906396::1::::<><><>0<>0<>f05ca74ee69a1c89af34e02719bc6b7b<>res://.godot/imported/playerGrey_up2.png-1a4d6b79dc0f594823072cc61cec8a24.ctex::
+playerGrey_walk1.png::CompressedTexture2D::8439835451959351789::1758906373::1758906373::1::::<><><>0<>0<>1e746000c9aa54f7708b28216c53d23f<>res://.godot/imported/playerGrey_walk1.png-cc737e5947095223c3494468704ca885.ctex::
+playerGrey_walk2.png::CompressedTexture2D::7414665279746869289::1758906380::1758906380::1::::<><><>0<>0<>1162bb024690dde7799d5614dfb0424b<>res://.godot/imported/playerGrey_walk2.png-f5cfaf08bfb66680dc47cac4becdc491.ctex::
+Xolonium-Regular.ttf::FontFile::7850992465502781703::1758917647::1758917647::1::::<><><>0<>0<>562c91687b83880f6970e95e120bac6b<>res://.godot/imported/Xolonium-Regular.ttf-cefac36a389c5d95bcf6427f2f697915.fontdata::
