@@ -1,23 +1,23 @@
-import 'dart:math';
+import 'dart:math'; //impots the dart math library for use of rng
 class createGrid
 {
-  List<List<int>> grid = [[]];
+  List<List<int>> grid = [[]]; //intializes list of lists to be used as grid
 
-    createGrid(n)
+    createGrid(n) //constructor that fills grid variable to be n x n size
     {
-        grid.removeAt(0);
-        grid = fill(n);
+        grid.removeAt(0); //removes the initial empty list created from the above variable
+        grid = fill(n); //calls function to fill teh grid variable
     }
   
-  List<List<int>> fill(int n)
+  List<List<int>> fill(int n) //function to fill grid
   {
-    Random rng = Random();
-    for(int i = 0; i < n; i++) 
+    Random rng = Random(); //creates rng object for getting random numbers
+    for(int i = 0; i < n; i++) //loops n times to create no rows in the grid
       {
-          List<int> row = [];
-          for(int i = 0; i < n; i++) 
+          List<int> row = []; //creates a list to be used as a row in the grid
+          for(int i = 0; i < n; i++) //loops n times to create columns in the grid
           {
-              row.add(rng.nextInt(10)+1);
+              row.add(rng.nextInt(10)+1); 
           }
           grid.add(row);
       }
