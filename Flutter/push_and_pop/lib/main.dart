@@ -111,6 +111,20 @@ class ThirdPage extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
+            ElevatedButton(
+              child: const Text('Push to Second Page'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MyHomePage(
+                      title: 'New Home Page',
+                      counter: counter,
+                      onIncrement: onIncrement,
+                          )),
+                );
+              },
+            ),
           ],
         ),
       ),
