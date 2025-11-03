@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mtg/mtg.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
