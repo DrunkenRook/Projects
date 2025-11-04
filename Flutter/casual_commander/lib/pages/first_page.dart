@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -8,36 +9,59 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
-  final List<String> _allItems = <String>[
-    '1. Game Concepts',
-    '2. Parts of a Card',
-    '3. Card Types',
-    '4. Zones',
-    '5. Turn Structure',
-    '6. Spells, Abilities, and Effects',
-    '7. The Stack',
-    '8. Multiplayer Rules',
-    '9. Casual Variants',
-  ];
+  // Will be populated from an asset text file (one entry per line).
+  List<String> fullList = <String>[];
 
-  List<String> _filteredItems = <String>[];
+  List<String> filteredList = <String>[];
+
+  // Loading indicator while reading the asset.
+  bool loading = true;
 
   @override
   void initState() {
     super.initState();
-    _filteredItems = List<String>.from(_allItems);
-    _controller.addListener(_onSearchChanged);
+    filteredList = <String>[];
+    controller.addListener(onSearchChanged);
+
+    _loadItemsFromAsset();
   }
 
-  void _onSearchChanged() {
-    final query = _controller.text.trim().toLowerCase();
+  Future<void> _loadItemsFromAsset() async {
+    try {
+      final contents = await rootBundle.loadString('assets/comprehensive_rules.txt');
+      final lines = contents
+          .split(RegExp(r'\r?\n'))
+          .map((s) => s.trim())
+          .where((s) => s.isNotEmpty)
+          .toList();
+
+      setState(() {
+        fullList = lines;
+        filteredList = List<String>.from(fullList);
+        loading = false;
+      });
+    } catch (e) {
+      // If the asset isn't found or can't be read, fall back to a debug list.
+      final debug = <String>[
+        'something went wrong loading comprehensive_rules.txt',
+      ];
+      setState(() {
+        fullList = debug;
+        filteredList = List<String>.from(fullList);
+        loading = false;
+      });
+    }
+  }
+
+  void onSearchChanged() {
+    final query = controller.text.trim().toLowerCase();
     setState(() {
       if (query.isEmpty) {
-        _filteredItems = List<String>.from(_allItems);
+        filteredList = List<String>.from(fullList);
       } else {
-        _filteredItems = _allItems
+        filteredList = fullList
             .where((s) => s.toLowerCase().contains(query))
             .toList();
       }
@@ -46,8 +70,8 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   void dispose() {
-    _controller.removeListener(_onSearchChanged);
-    _controller.dispose();
+    controller.removeListener(onSearchChanged);
+    controller.dispose();
     super.dispose();
   }
 
@@ -65,7 +89,7 @@ class _FirstPageState extends State<FirstPage> {
           children: <Widget>[
             // Search field
             TextField(
-              controller: _controller,
+              controller: controller,
               style: const TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               decoration: InputDecoration(
@@ -84,29 +108,33 @@ class _FirstPageState extends State<FirstPage> {
             const SizedBox(height: 12.0),
 
             Expanded(
-              child: _filteredItems.isEmpty
+              child: loading
                   ? const Center(
-                      child: Text(
-                        'No results',
-                        style: TextStyle(color: Colors.white70),
-                      ),
+                      child: CircularProgressIndicator(),
                     )
-                  : ListView.separated(
-                      itemCount: _filteredItems.length,
-                      separatorBuilder: (context, index) => Divider(color: Colors.grey[800]),
-                      itemBuilder: (context, index) {
-                        final item = _filteredItems[index];
-                        return ListTile(
-                          title: Text(item, style: const TextStyle(color: Colors.white)),
-                          tileColor: Colors.transparent,
-                          onTap: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('Selected: $item')),
+                  : filteredList.isEmpty
+                      ? const Center(
+                          child: Text(
+                            'No results',
+                            style: TextStyle(color: Colors.white70),
+                          ),
+                        )
+                      : ListView.separated(
+                          itemCount: filteredList.length,
+                          separatorBuilder: (context, index) => Divider(color: Colors.grey[800]),
+                          itemBuilder: (context, index) {
+                            final item = filteredList[index];
+                            return ListTile(
+                              title: Text(item, style: const TextStyle(color: Colors.white)),
+                              tileColor: Colors.transparent,
+                              onTap: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Selected: $item')),
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                    ),
+                        ),
             ),
           ],
         ),
