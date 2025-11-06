@@ -59,23 +59,23 @@ class FirstPageState extends State<FirstPage>
     }
   }
 
-  void onSearchChange() 
+  void onSearchChange() //filters the list based on the text in the search bar
   {
-    final query = controller.text.trim().toLowerCase();
+    final query = controller.text.trim().toLowerCase();//formats text in search bar
     setState(() {
-      if (query.isEmpty) 
+      if (query.isEmpty)
       {
-        filteredList = List<String>.from(fullList);
+        filteredList = List<String>.from(fullList);//if the search bar is empty filteredList is fullList
       } else {
         filteredList = fullList
-            .where((s) => s.toLowerCase().contains(query))
+            .where((s) => s.toLowerCase().contains(query))//sets filteredList to only the rules that have the text in the search bar
             .toList();
       }
     });
   }
 
   @override
-  void dispose() 
+  void dispose() //getsrid of the controller when the widget is closed
   {
     controller.removeListener(onSearchChange);
     controller.dispose();
@@ -83,7 +83,7 @@ class FirstPageState extends State<FirstPage>
   }
 
   @override
-  Widget build(BuildContext context) 
+  Widget build(BuildContext context)//regular page building with the above variables and functions added where needed 
   {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),

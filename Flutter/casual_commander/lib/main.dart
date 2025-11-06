@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
+            Image.asset(//Logo image for home page
               'assets/casual_commander_image.png',  
               width: 300,  
               height: 300,  
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget
             ),
             const SizedBox(height: 20),  
             const Text(
-              'Welcome to Casual Commander!',
+              'Welcome to Casual Commander!',//welcome message for home page
               style: TextStyle(color: Colors.white),
             ),
           ],
