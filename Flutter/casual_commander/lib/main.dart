@@ -3,9 +3,9 @@ import 'pages/first_page.dart';
 import 'pages/second_page.dart';
 import 'pages/third_page.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const MyApp()); //Tells main to use runApp on MyApp
 
-class MyApp extends StatelessWidget 
+class MyApp extends StatelessWidget //Initializes MyApp as a StatellessWidget
 {
   const MyApp({super.key});
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget
     return MaterialApp(
       title: appTitle,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: const Color.fromARGB(255, 40, 38, 38),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
@@ -95,10 +95,10 @@ class HomePage extends StatelessWidget
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/casual_commander_image.',  
-              // width: 300,  
-              // height: 300,  
-              // fit: BoxFit.cover,
+              'assets/casual_commander_image.png',  
+              width: 300,  
+              height: 300,  
+              fit: BoxFit.cover,
             ),
             const SizedBox(height: 20),  
             const Text(

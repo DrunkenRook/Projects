@@ -6,46 +6,46 @@ class FirstPage extends StatefulWidget
   const FirstPage({super.key});
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<FirstPage> createState() => FirstPageState();
 }
 
-class _FirstPageState extends State<FirstPage> 
+class FirstPageState extends State<FirstPage> 
 {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController controller = TextEditingController()//creates an editable text field
 
-  List<String> fullList = <String>[];
+  List<String> fullList = <String>[];//list of all the rules for MTG
 
-  List<String> filteredList = <String>[];
+  List<String> filteredList = <String>[];//list of filtered rules that included the text in the search bar
 
-  bool loading = true;
+  bool loading = true;//boolean to indicate if the search is still loading
 
   @override
   void initState() 
   {
     super.initState();
-    filteredList = <String>[];
-    controller.addListener(onSearchChanged);
+    filteredList = <String>[];//resets filtered list to empty
+    controller.addListener(onSearchChange);//adds listener to the search bar
 
-    _loadItemsFromAsset();
+    loadItemsFromAsset();
   }
 
-  Future<void> _loadItemsFromAsset() async 
+  Future<void> loadItemsFromAsset() async //parses the rules from a text file into a list asynchronously
   {
     try {
-      final contents = await rootBundle.loadString('assets/comprehensive_rules.txt');
+      final contents = await rootBundle.loadString('assets/comprehensive_rules.txt');//tries to load the text file as a string
       final lines = contents
-          .split(RegExp(r'\r?\n'))
-          .map((s) => s.trim())
-          .where((s) => s.isNotEmpty)
-          .toList();
+          .split(RegExp(r'\r?\n'))//splits the lines
+          .map((s) => s.trim())//removes blankspace on ends
+          .where((s) => s.isNotEmpty)//filters out empty lines
+          .toList();//converts the lines left into a list(lines)
 
-      setState(() 
+      setState(() //updates the state of the widget
       {
-        fullList = lines;
-        filteredList = List<String>.from(fullList);
-        loading = false;
+        fullList = lines;//sets fullList tp the parsed lines
+        filteredList = List<String>.from(fullList);//sets filteredList to fullList
+        loading = false;//sets loading indicator to false
       });
-    } catch (e) 
+    } catch (e) //catches errors
     {
       // If the asset isn't found or can't be read, fall back to a debug list.
       final debug = <String>[
@@ -59,7 +59,7 @@ class _FirstPageState extends State<FirstPage>
     }
   }
 
-  void onSearchChanged() 
+  void onSearchChange() 
   {
     final query = controller.text.trim().toLowerCase();
     setState(() {
@@ -77,7 +77,7 @@ class _FirstPageState extends State<FirstPage>
   @override
   void dispose() 
   {
-    controller.removeListener(onSearchChanged);
+    controller.removeListener(onSearchChange);
     controller.dispose();
     super.dispose();
   }
@@ -86,7 +86,7 @@ class _FirstPageState extends State<FirstPage>
   Widget build(BuildContext context) 
   {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 40, 38, 38),
       appBar: AppBar(
         title: const Text('Rulebook', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,

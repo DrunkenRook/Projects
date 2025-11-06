@@ -9,7 +9,7 @@ class SecondPage extends StatelessWidget
   Widget build(BuildContext context) 
   {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 40, 38, 38),
       appBar: AppBar(
         title: const Text('Card Search', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
