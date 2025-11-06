@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget //Initializes MyApp as a StatellessWidget
     return MaterialApp(
       title: appTitle,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 40, 38, 38),
           foregroundColor: Colors.white,
         ),
       ),

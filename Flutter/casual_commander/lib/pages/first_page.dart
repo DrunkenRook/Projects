@@ -11,7 +11,7 @@ class FirstPage extends StatefulWidget
 
 class FirstPageState extends State<FirstPage> 
 {
-  final TextEditingController controller = TextEditingController()//creates an editable text field
+  final TextEditingController controller = TextEditingController();//creates an editable text field
 
   List<String> fullList = <String>[];//list of all the rules for MTG
 
@@ -86,10 +86,10 @@ class FirstPageState extends State<FirstPage>
   Widget build(BuildContext context) 
   {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
         title: const Text('Rulebook', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 40, 38, 38),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
