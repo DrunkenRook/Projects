@@ -62,6 +62,7 @@ class FirstPageState extends State<FirstPage>
   void onSearchChange() //filters the list based on the text in the search bar
   {
     final query = controller.text.trim().toLowerCase();//formats text in search bar
+    debugPrint('Search query: $query');//prints text in search bar to console for debugging
     setState(() {
       if (query.isEmpty)
       {
