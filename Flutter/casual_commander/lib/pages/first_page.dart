@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-class FirstPage extends StatefulWidget {
+class FirstPage extends StatefulWidget 
+{
   const FirstPage({super.key});
 
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _FirstPageState extends State<FirstPage> 
+{
   final TextEditingController controller = TextEditingController();
 
-  // Will be populated from an asset text file (one entry per line).
   List<String> fullList = <String>[];
 
   List<String> filteredList = <String>[];
 
-  // Loading indicator while reading the asset.
   bool loading = true;
 
   @override
-  void initState() {
+  void initState() 
+  {
     super.initState();
     filteredList = <String>[];
     controller.addListener(onSearchChanged);
@@ -28,7 +29,8 @@ class _FirstPageState extends State<FirstPage> {
     _loadItemsFromAsset();
   }
 
-  Future<void> _loadItemsFromAsset() async {
+  Future<void> _loadItemsFromAsset() async 
+  {
     try {
       final contents = await rootBundle.loadString('assets/comprehensive_rules.txt');
       final lines = contents
@@ -37,12 +39,14 @@ class _FirstPageState extends State<FirstPage> {
           .where((s) => s.isNotEmpty)
           .toList();
 
-      setState(() {
+      setState(() 
+      {
         fullList = lines;
         filteredList = List<String>.from(fullList);
         loading = false;
       });
-    } catch (e) {
+    } catch (e) 
+    {
       // If the asset isn't found or can't be read, fall back to a debug list.
       final debug = <String>[
         'something went wrong loading comprehensive_rules.txt',
@@ -55,10 +59,12 @@ class _FirstPageState extends State<FirstPage> {
     }
   }
 
-  void onSearchChanged() {
+  void onSearchChanged() 
+  {
     final query = controller.text.trim().toLowerCase();
     setState(() {
-      if (query.isEmpty) {
+      if (query.isEmpty) 
+      {
         filteredList = List<String>.from(fullList);
       } else {
         filteredList = fullList
@@ -69,14 +75,16 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   @override
-  void dispose() {
+  void dispose() 
+  {
     controller.removeListener(onSearchChanged);
     controller.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(

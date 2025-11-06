@@ -5,11 +5,13 @@ import 'pages/third_page.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget 
+{
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     const String appTitle = 'Casual Commander';
     return MaterialApp(
       title: appTitle,
@@ -25,11 +27,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget 
+{
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Casual Commander'),
@@ -52,7 +56,8 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Rulebook', style: TextStyle(color: Colors.white)),
-              onTap: () {
+              onTap: () 
+              {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -62,7 +67,8 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Card Search', style: TextStyle(color: Colors.white)),
-              onTap: () {
+              onTap: () 
+              {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -72,7 +78,8 @@ class HomePage extends StatelessWidget {
             ),
             ListTile(
               title: const Text('Deck Library', style: TextStyle(color: Colors.white)),
-              onTap: () {
+              onTap: () 
+              {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
