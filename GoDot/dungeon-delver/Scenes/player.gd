@@ -1,5 +1,9 @@
+#Player sprite assets aquired from https://penusbmic.itch.io/sci-fi-character-pack-10
+# Script written with the help of GoDot's beginner tutorial
+
+
 extends CharacterBody2D
-# Created with the help of GoDot's beginner tutorial
+
 @export var speed = 400
 var screen_size
 
