@@ -10,7 +10,7 @@ class FirstPage extends StatefulWidget
 }
 
 class FirstPageState extends State<FirstPage> 
-{
+{ 
   final TextEditingController controller = TextEditingController();//creates an editable text field
 
   List<String> fullList = <String>[];//list of all the rules for MTG

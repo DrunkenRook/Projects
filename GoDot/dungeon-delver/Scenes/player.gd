@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+# Created with the help of GoDot's beginner tutorial
 @export var speed = 400
 var screen_size
 
