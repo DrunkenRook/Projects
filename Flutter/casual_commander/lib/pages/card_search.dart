@@ -179,6 +179,13 @@ class CardSearchState extends State<CardSearch>
       appBar: AppBar(
         title: const Text('Card Search', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            tooltip: 'User',
+            onPressed: () {}, // placeholder for user details
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

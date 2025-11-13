@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget //Initializes MyApp as a StatellessWidget
   {
     const String appTitle = 'Casual Commander';
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appTitle,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
@@ -37,6 +38,13 @@ class HomePage extends StatelessWidget
     return Scaffold(
       appBar: AppBar(
         title: const Text('Casual Commander'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            tooltip: 'User',
+            onPressed: () {}, // placeholder for user details
+          ),
+        ],
       ),
       drawer: Drawer(
         backgroundColor: Colors.black,

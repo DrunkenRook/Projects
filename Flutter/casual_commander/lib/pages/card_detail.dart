@@ -27,6 +27,13 @@ class CardDetail extends StatelessWidget
       appBar: AppBar(
         title: Text(name, style: const TextStyle(color: Colors.white)),
         backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            tooltip: 'User',
+            onPressed: () {}, // placeholder for user details
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

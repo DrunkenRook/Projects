@@ -12,6 +12,13 @@ class DeckLibrary extends StatelessWidget
       appBar: AppBar(
         title: const Text('Deck Library', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person, color: Colors.white),
+            tooltip: 'User',
+            onPressed: () {}, // placeholder for user details
+          ),
+        ],
       ),
       body: const Center(
         child: Text(
