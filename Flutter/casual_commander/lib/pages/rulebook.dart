@@ -9,7 +9,7 @@ class Rulebook extends StatefulWidget
   State<Rulebook> createState() => RulebookState();
 }
 
-class RulebookState extends State<Rulebook> 
+class RulebookState extends State<Rulebook>
 { 
   final TextEditingController controller = TextEditingController();//creates an editable text field
 
@@ -31,7 +31,8 @@ class RulebookState extends State<Rulebook>
 
   Future<void> loadItemsFromAsset() async //parses the rules from a text file into a list asynchronously
   {
-    try {
+    try 
+    {
       final contents = await rootBundle.loadString('assets/comprehensive_rules.txt');//tries to load the text file as a string
       final lines = contents
           .split(RegExp(r'\r?\n'))//splits the lines
@@ -45,13 +46,15 @@ class RulebookState extends State<Rulebook>
         filteredList = List<String>.from(fullList);//sets filteredList to fullList
         loading = false;//sets loading indicator to false
       });
-    } catch (e) //catches errors
+    } 
+    catch (e) //catches errors
     {
       // If the asset isn't found or can't be read, fall back to a debug list.
       final debug = <String>[
         'something went wrong loading comprehensive_rules.txt',
       ];
-      setState(() {
+      setState(() 
+      {
         fullList = debug;
         filteredList = List<String>.from(fullList);
         loading = false;
@@ -63,11 +66,14 @@ class RulebookState extends State<Rulebook>
   {
     final query = controller.text.trim().toLowerCase();//formats text in search bar
     debugPrint('Search query: $query');//prints text in search bar to console for debugging
-    setState(() {
+    setState(() 
+    {
       if (query.isEmpty)
       {
         filteredList = List<String>.from(fullList);//if the search bar is empty filteredList is fullList
-      } else {
+      } 
+      else 
+      {
         filteredList = fullList
             .where((s) => s.toLowerCase().contains(query))//sets filteredList to only the rules that have the text in the search bar
             .toList();
@@ -131,12 +137,14 @@ class RulebookState extends State<Rulebook>
                       : ListView.separated(
                           itemCount: filteredList.length,
                           separatorBuilder: (context, index) => Divider(color: Colors.grey[800]),
-                          itemBuilder: (context, index) {
+                          itemBuilder: (context, index) 
+                          {
                             final item = filteredList[index];
                             return ListTile(
                               title: Text(item, style: const TextStyle(color: Colors.white)),
                               tileColor: Colors.transparent,
-                              onTap: () {
+                              onTap: () 
+                              {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(content: Text('Selected: $item')),
                                 );

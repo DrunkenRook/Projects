@@ -1,16 +1,18 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'card_detail.dart';
 
-class CardSearch extends StatefulWidget {
+class CardSearch extends StatefulWidget
+{
   const CardSearch({super.key});
 
   @override
   State<CardSearch> createState() => CardSearchState();
 }
 
-class CardSearchState extends State<CardSearch> {
+class CardSearchState extends State<CardSearch> 
+{
   final TextEditingController _controller = TextEditingController();
   String storedText = '';
   bool isLoading = false;
@@ -18,13 +20,15 @@ class CardSearchState extends State<CardSearch> {
   List<dynamic> results = [];
 
   @override
-  void dispose() {
+  void dispose() 
+  {
     _controller.dispose();
     super.dispose();
   }
 
   //asynchronusly searches for card input
-  Future<void> searchInput() async {
+  Future<void> searchInput() async 
+  {
     setState(() {
       storedText = _controller.text;
       isLoading = true;
@@ -43,43 +47,59 @@ class CardSearchState extends State<CardSearch> {
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = jsonDecode(response.body);
         // API returns an object with a 'cards' array
-        setState(() {
+        setState(() 
+        {
           results = data['cards'] ?? [];//empty list if no results
         });
-      } else {
-        setState(() {
+      } 
+      else 
+      {
+        setState(() 
+        {
           error = 'Request failed: ${response.statusCode}';//error message for failed resuest
         });
       }
-    } catch (e) {
-      setState(() {
+    } 
+    catch (e) 
+    {
+      setState(() 
+      {
         error = 'Error: $e';//variable message for exceptions
       });
-    } finally {
-      setState(() {
+    } 
+    finally 
+    {
+      setState(() 
+      {
         isLoading = false;//stops loading indicator
       });
     }
 
   }
 
-  Widget buildResults() {
-    if (isLoading) {//indicator for loading state
+  Widget buildResults() 
+  {
+    if (isLoading) 
+    {//indicator for loading state
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (error != null) {//error message for failed return
+    if (error != null) 
+    {//error message for failed return
       return Center(child: Text(error!, style: const TextStyle(color: Colors.red)));
     }
 
-    if (results.isEmpty) {//message for no matching cards
+    if (results.isEmpty) 
+    {//message for no matching cards
       return const Center(child: Text('No results', style: TextStyle(color: Colors.white70)));
     }
 
     // Group results by card name 
     final Map<String, List<Map<String, dynamic>>> grouped = {};//map to group results by name
-    for (final item in results) {//iterates through results
-      if (item is Map<String, dynamic>) {//checks if item is a map
+    for (final item in results) 
+    {//iterates through results
+      if (item is Map<String, dynamic>) 
+      {//checks if item is a map
         final name = (item['name'] ?? 'Unknown').toString();//gets the cards name or sets unknown
         grouped.putIfAbsent(name, () => []).add(item);//adds card to a group based on name
       }
@@ -90,13 +110,15 @@ class CardSearchState extends State<CardSearch> {
     // builds lists with grouped card results
     return ListView.builder(
       itemCount: groups.length,
-      itemBuilder: (context, index) {
+      itemBuilder: (context, index) 
+      {
         final entry = groups[index];
         final name = entry.key;
         final variants = entry.value;
 
         //adds subtitles to the cards
-        if (variants.length == 1) {
+        if (variants.length == 1) 
+        {
           final card = variants.first;
           final subtitleParts = <String>[];
           if ((card['type'] ?? '') != '') subtitleParts.add(card['type']);
@@ -106,6 +128,15 @@ class CardSearchState extends State<CardSearch> {
             title: Text(name, style: const TextStyle(color: Colors.white)),
             subtitle: subtitle.isNotEmpty ? Text(subtitle, style: const TextStyle(color: Colors.white70)) : null,
             dense: true,
+            onTap: () 
+            {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CardDetail(card: card),
+                ),
+              );
+            },
           );
         }
 
@@ -125,6 +156,15 @@ class CardSearchState extends State<CardSearch> {
               title: Text(card['name'] ?? 'Unknown', style: const TextStyle(color: Colors.white)),
               subtitle: subtitle.isNotEmpty ? Text(subtitle, style: const TextStyle(color: Colors.white70)) : null,
               dense: true,
+              onTap: () 
+              {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CardDetail(card: card),
+                  ),
+                );
+              },
             );
           }).toList(),
         );
@@ -132,7 +172,8 @@ class CardSearchState extends State<CardSearch> {
     );
   }
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
@@ -165,9 +206,11 @@ class CardSearchState extends State<CardSearch> {
                   ),
                   const SizedBox(width: 8),
                   OutlinedButton(
-                    onPressed: () {
+                    onPressed: () 
+                    {
                       _controller.clear();
-                      setState(() {
+                      setState(() 
+                      {
                         storedText = '';
                       });
                     },
