@@ -23,6 +23,7 @@ class SecondPageState extends State<SecondPage> {
     super.dispose();
   }
 
+  //asynchronusly searches for card input
   Future<void> searchInput() async {
     setState(() {
       storedText = _controller.text;
@@ -43,49 +44,50 @@ class SecondPageState extends State<SecondPage> {
         final Map<String, dynamic> data = jsonDecode(response.body);
         // API returns an object with a 'cards' array
         setState(() {
-          results = data['cards'] ?? [];
+          results = data['cards'] ?? [];//empty list if no results
         });
       } else {
         setState(() {
-          error = 'Request failed: ${response.statusCode}';
+          error = 'Request failed: ${response.statusCode}';//error message for failed resuest
         });
       }
     } catch (e) {
       setState(() {
-        error = 'Error: $e';
+        error = 'Error: $e';//variable message for exceptions
       });
     } finally {
       setState(() {
-        isLoading = false;
+        isLoading = false;//stops loading indicator
       });
     }
 
   }
 
-  Widget _buildResults() {
-    if (isLoading) {
+  Widget buildResults() {
+    if (isLoading) {//indicator for loading state
       return const Center(child: CircularProgressIndicator());
     }
 
-    if (error != null) {
+    if (error != null) {//error message for failed return
       return Center(child: Text(error!, style: const TextStyle(color: Colors.red)));
     }
 
-    if (results.isEmpty) {
+    if (results.isEmpty) {//message for no matching cards
       return const Center(child: Text('No results', style: TextStyle(color: Colors.white70)));
     }
 
-    // Group results by exact card name
-    final Map<String, List<Map<String, dynamic>>> grouped = {};
-    for (final item in results) {
-      if (item is Map<String, dynamic>) {
-        final name = (item['name'] ?? 'Unknown').toString();
-        grouped.putIfAbsent(name, () => []).add(item);
+    // Group results by card name 
+    final Map<String, List<Map<String, dynamic>>> grouped = {};//map to group results by name
+    for (final item in results) {//iterates through results
+      if (item is Map<String, dynamic>) {//checks if item is a map
+        final name = (item['name'] ?? 'Unknown').toString();//gets the cards name or sets unknown
+        grouped.putIfAbsent(name, () => []).add(item);//adds card to a group based on name
       }
     }
 
-    final groups = grouped.entries.toList();
+    final groups = grouped.entries.toList();//makes list out of grouped entries
 
+    // builds lists with grouped card results
     return ListView.builder(
       itemCount: groups.length,
       itemBuilder: (context, index) {
@@ -93,12 +95,13 @@ class SecondPageState extends State<SecondPage> {
         final name = entry.key;
         final variants = entry.value;
 
+        //adds subtitles to the cards
         if (variants.length == 1) {
           final card = variants.first;
           final subtitleParts = <String>[];
           if ((card['type'] ?? '') != '') subtitleParts.add(card['type']);
-          if ((card['set'] ?? '') != '') subtitleParts.add(card['set']);
-          final subtitle = subtitleParts.join(' • ');
+          if ((card['setName'] ?? '') != '') subtitleParts.add(card['setName']);
+          final subtitle = subtitleParts.join('/n');//adds subtitles as long as they exist and joins them
           return ListTile(
             title: Text(name, style: const TextStyle(color: Colors.white)),
             subtitle: subtitle.isNotEmpty ? Text(subtitle, style: const TextStyle(color: Colors.white70)) : null,
@@ -106,16 +109,16 @@ class SecondPageState extends State<SecondPage> {
           );
         }
 
-        // Multiple variants with same name -> show ExpansionTile
+        //
         return ExpansionTile(
           title: Text(name, style: const TextStyle(color: Colors.white)),
           tilePadding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: variants.map<Widget>((card) {
             final type = (card['type'] ?? '').toString();
-            final set = (card['set'] ?? '').toString();
+            final setName = (card['setName'] ?? '').toString();
             final subtitleParts = <String>[];
             if (type.isNotEmpty) subtitleParts.add(type);
-            if (set.isNotEmpty) subtitleParts.add(set);
+            if (setName.isNotEmpty) subtitleParts.add(setName);
             final subtitle = subtitleParts.join(' • ');
 
             return ListTile(
@@ -179,7 +182,7 @@ class SecondPageState extends State<SecondPage> {
               ),
               const SizedBox(height: 12),
               // Results list takes remaining space and is scrollable
-              Expanded(child: _buildResults()),
+              Expanded(child: buildResults()),
             ],
           ),
         ),
