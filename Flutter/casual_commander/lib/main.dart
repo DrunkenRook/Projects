@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/first_page.dart';
-import 'pages/second_page.dart';
-import 'pages/third_page.dart';
+import 'pages/rulebook.dart';
+import 'pages/card_search.dart';
+import 'pages/deck_library.dart';
 
 void main() => runApp(const MyApp()); //Tells main to use runApp on MyApp
 
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const FirstPage()),
+                  MaterialPageRoute(builder: (context) => const Rulebook()),
                 );
               },
             ),
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondPage()),
+                  MaterialPageRoute(builder: (context) => const CardSearch()),
                 );
               },
             ),
@@ -83,7 +83,7 @@ class HomePage extends StatelessWidget
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ThirdPage()),
+                  MaterialPageRoute(builder: (context) => const DeckLibrary()),
                 );
               },
             ),
