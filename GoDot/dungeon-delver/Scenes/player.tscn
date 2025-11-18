@@ -179,7 +179,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hit",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -199,7 +199,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -232,12 +232,15 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_x3wgy")
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3smsa")
 animation = &"Run"
+frame_progress = 0.28228888
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -248,3 +251,4 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [connection signal="ready" from="." to="." method="ready"]
+[connection signal="animation_finished" from="PlayerAnimation" to="." method="attack_animation"]
