@@ -14,13 +14,13 @@ func ready():
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("moveRight"):
-		velocity.x += 15
+		velocity.x += 20
 	if Input.is_action_pressed("moveLeft"):
-		velocity.x -= 15
+		velocity.x -= 20
 	if Input.is_action_pressed("moveDown"):
-		velocity.y += 15
+		velocity.y += 20
 	if Input.is_action_pressed("moveUp"):
-		velocity.y -= 15
+		velocity.y -= 20
 	
 	if velocity.x != 0 or velocity.y != 0:
 		$PlayerAnimation.animation = &"Run"
