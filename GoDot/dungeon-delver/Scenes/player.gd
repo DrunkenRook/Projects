@@ -4,33 +4,38 @@
 
 extends CharacterBody2D
 
-@export var speed = 400
+var speed = 500
 var screen_size
 
 func ready():
 	screen_size = get_viewport().size
-	$PlayerAnimation.animation = ("Idle")
+	$PlayerAnimation.animation = (&"Idle")
 	$PlayerAnimation.play()
 
 func process(delta):
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("moveRight"):
+	if Input.is_action_pressed(&"moveRight"):
 		velocity.x += 10
-	if Input.is_action_pressed("moveLeft"):
+	if Input.is_action_pressed(&"moveLeft"):
 		velocity.x -= 10
-	if Input.is_action_pressed("moveDown"):
+	if Input.is_action_pressed(&"moveDown"):
 		velocity.y += 10
-	if Input.is_action_pressed("moveUp"):
+	if Input.is_action_pressed(&"moveUp"):
 		velocity.y -= 10
 	
-	if velocity.x != 0:
-		$PlayerAnimation.animation = "Run"
-		$PlayerAnimation.flip_h = velocity.x < 0
-	else:
-		$PlayerAnimation.animation = "Idle"
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
 	
 	position += velocity * delta
 	#position = position.clamp(Vector2.ZERO, screen_size)
+	
+	if velocity.x != 0:
+		$PlayerAnimation.animation = &"Run"
+		$PlayerAnimation.flip_h = velocity.x < 0
+	else:
+		$PlayerAnimation.animation = &"Idle"
+	
+	
 
 
 	

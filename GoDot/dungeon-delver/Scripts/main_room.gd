@@ -3,5 +3,9 @@
 class_name Room
 extends StaticBody2D
 
-func ready():
+func game_start():
+	pass
+	#$Player.start
+
+func wall_collision(wall):
 	pass
