@@ -170,11 +170,6 @@ animations = [{
 "name": &"Death",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Down",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ijsl")
@@ -234,11 +229,6 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Up",
-"speed": 5.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -248,11 +238,13 @@ script = ExtResource("1_x3wgy")
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3smsa")
 animation = &"Run"
-frame_progress = 0.5209518
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 3)
 polygon = PackedVector2Array(-5, -8, 8, -7, 10, 5, 7, 14, -5, 13, -9, 1)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+
+[connection signal="ready" from="." to="." method="ready"]

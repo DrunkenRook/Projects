@@ -9,27 +9,28 @@ var screen_size
 
 func ready():
 	screen_size = get_viewport().size
+	$PlayerAnimation.animation = ("Idle")
+	$PlayerAnimation.play()
 
-func _process(delta):
+func process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("moveRight"):
-		velocity.x += 1
+		velocity.x += 10
 	if Input.is_action_pressed("moveLeft"):
-		velocity.x -= 1
+		velocity.x -= 10
 	if Input.is_action_pressed("moveDown"):
-		velocity.y += 1
+		velocity.y += 10
 	if Input.is_action_pressed("moveUp"):
-		velocity.y -= 1
+		velocity.y -= 10
 	
 	if velocity.x != 0:
 		$PlayerAnimation.animation = "Run"
-		$PlayerAnimation.flip_v = false
 		$PlayerAnimation.flip_h = velocity.x < 0
-	#elif velocity.y != 0:
-		#$PlayerAnimation.animation = "Up"
-		#$AnimatedSprite2D.flip_v = velocity.y > 0
 	else:
 		$PlayerAnimation.animation = "Idle"
 	
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp(Vector2.ZERO, screen_size)
+
+
+	
