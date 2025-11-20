@@ -25,6 +25,10 @@ func _process(delta):
 	if velocity.x != 0 or velocity.y != 0:
 		$PlayerAnimation.animation = &"Run"
 		$PlayerAnimation.flip_h = velocity.x < 0
+	elif Input.is_action_pressed("attack"):
+		$PlayerAnimation.animation = &"Attack"
+		velocity.x = 0
+		velocity.y = 0
 	else:
 		$PlayerAnimation.animation = &"Idle"
 	

@@ -237,8 +237,7 @@ script = ExtResource("1_x3wgy")
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"Run"
-frame_progress = 0.30130562
+animation = &"Attack"
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
