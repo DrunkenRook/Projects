@@ -248,4 +248,5 @@ metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [connection signal="ready" from="." to="." method="ready"]
-[connection signal="animation_finished" from="PlayerAnimation" to="." method="attack_animation"]
+[connection signal="animation_finished" from="PlayerAnimation" to="." method="on_animation_finished"]
+[connection signal="animation_looped" from="PlayerAnimation" to="." method="on_animation_looped"]
