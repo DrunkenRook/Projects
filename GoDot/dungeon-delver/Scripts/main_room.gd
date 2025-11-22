@@ -9,3 +9,4 @@ func game_start():
 
 func wall_collision(wall):
 	pass
+	
