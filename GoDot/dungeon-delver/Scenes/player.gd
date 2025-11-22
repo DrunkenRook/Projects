@@ -45,7 +45,10 @@ func on_animation_finished() -> void:
 	
 func on_animation_looped() -> void:
 	$PlayerAnimation.animation = &"Idle"
+<<<<<<< HEAD
 	
 func on_attack_entered(area):
 	if area.is_in_group("hitbox"):
 		area.take_damage()
+=======
+>>>>>>> c59fe612910da9adeb5bf034e50d7c92fb35f690
