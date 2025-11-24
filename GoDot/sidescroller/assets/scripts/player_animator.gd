@@ -27,8 +27,8 @@ func _process(_delta):
 	#changes sprite for movement
 	if abs(player_controller.velocity.x) > 0:
 		animation_player.play("move")
-	#else:
-		#animation_player.play("idle")
+	elif player_controller.velocity.x == 0 and animation_player.current_animation == "move":
+		animation_player.play("idle")
 	#changes sprite for jump or fall
 	if player_controller.velocity.y < 0:
 		animation_player.play("jump")
