@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://o3xe25iv73ol"]
+[gd_scene load_steps=36 format=3 uid="uid://o3xe25iv73ol"]
 
 [ext_resource type="Texture2D" uid="uid://b172a8o5x704l" path="res://assets/CharacterSprites/Ball and Chain Bot/idle.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://7wjsgtuxs4mw" path="res://Scenes/player.gd" id="1_x3wgy"]
@@ -6,36 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dm0j03t2b74ma" path="res://assets/CharacterSprites/Ball and Chain Bot/death.png" id="3_8erm5"]
 [ext_resource type="Texture2D" uid="uid://biitdo5r2rohb" path="res://assets/CharacterSprites/Ball and Chain Bot/hit.png" id="4_f1ek2"]
 [ext_resource type="Texture2D" uid="uid://cd1h0j8xmrbtn" path="res://assets/CharacterSprites/Ball and Chain Bot/run.png" id="6_tx1dd"]
-[ext_resource type="Script" uid="uid://cvxp2ukgxcggt" path="res://Scenes/player_animation.gd" id="7_3smsa"]
-[ext_resource type="Script" uid="uid://bgtojmcpg8ihg" path="res://Scenes/attack_area.gd" id="8_f1ek2"]
-[ext_resource type="Script" uid="uid://cj7xhven8qwma" path="res://Scenes/player_attack_polygon.gd" id="9_tx1dd"]
-
-[sub_resource type="Animation" id="Animation_x3wgy"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("PlayerAnimation:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimation:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
 atlas = ExtResource("2_3smsa")
@@ -200,6 +170,11 @@ animations = [{
 "name": &"Death",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2ijsl")
@@ -209,7 +184,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hit",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,7 +204,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -259,137 +234,25 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_3smsa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimation:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_3smsa")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimation:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerAnimation/AttackArea/PlayerAttackPolygon:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerAnimation/AttackArea/PlayerAttackPolygon:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(32, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_8erm5"]
-resource_name = "attack"
-length = 1.4333
-step = 0.002
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimation:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimation/AttackArea/PlayerAttackPolygon:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1.002599),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerAnimation/AttackArea/PlayerAttackPolygon:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7747356),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(34, -2), Vector2(32, 3)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ek2"]
-_data = {
-&"RESET": SubResource("Animation_3smsa"),
-&"attack": SubResource("Animation_8erm5"),
-&"new_animation": SubResource("Animation_x3wgy")
-}
-
-[node name="Player" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x3wgy")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_f1ek2")
-}
 
 [node name="PlayerAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3smsa")
-animation = &"Attack"
-script = ExtResource("7_3smsa")
-
-[node name="AttackArea" type="Area2D" parent="PlayerAnimation"]
-script = ExtResource("8_f1ek2")
-
-[node name="PlayerAttackPolygon" type="CollisionPolygon2D" parent="PlayerAnimation/AttackArea"]
-position = Vector2(32, 3)
-polygon = PackedVector2Array(-22, 4, -12, 6, 6, 6, 17, 1, 16, -1, 9, -4, 3, -5, -13, -5, -13, -4, -5, -3, 4, -1, 10, 0, 6, 2, -2, 2, -20, 2, -23, 2)
-script = ExtResource("9_tx1dd")
+animation = &"Run"
+frame_progress = 0.5209518
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, 3)
 polygon = PackedVector2Array(-5, -8, 8, -7, 10, 5, 7, 14, -5, 13, -9, 1)
-
-[connection signal="ready" from="." to="." method="ready"]
-[connection signal="animation_finished" from="PlayerAnimation" to="." method="on_animation_finished"]
-[connection signal="animation_looped" from="PlayerAnimation" to="." method="on_animation_looped"]
-<<<<<<< HEAD
-[connection signal="sprite_flipped" from="PlayerAnimation" to="PlayerAnimation/AttackArea" method="_on_player_animation_sprite_flipped"]
-=======
->>>>>>> c59fe612910da9adeb5bf034e50d7c92fb35f690
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
