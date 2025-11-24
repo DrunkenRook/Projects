@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvrowlexq14yn"]
+
+[sub_resource type="Curve2D" id="Curve2D_eevdr"]
+
+[node name="MovingPlatformLarge" type="Path2D"]
+curve = SubResource("Curve2D_eevdr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
