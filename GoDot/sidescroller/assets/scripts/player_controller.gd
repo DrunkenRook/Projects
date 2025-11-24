@@ -3,6 +3,7 @@ class_name PlayerController
 
 @export var speed = 10
 @export var jump_power = 10
+@export var animation_player : AnimationPlayer
 
 var speed_multiplier = 30
 var jump_multiplier = -30

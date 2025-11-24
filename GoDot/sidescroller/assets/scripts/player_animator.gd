@@ -4,8 +4,21 @@ extends Node2D
 @export var animation_player : AnimationPlayer
 @export var sprite : Sprite2D
 
+var second_attack = false
+var third_attack = false
+
+func _input(event):
+	#Handles attacks
+	if event.is_action_pressed("attack"):
+		if animation_player.current_animation == "attack1":
+			second_attack = true
+		elif animation_player.current_animation == "attack2":
+			third_attack = true
+		else:
+			animation_player.play("attack1")
+
 #sprite animation controllers
-func _process(delta):
+func _process(_delta):
 	#flips sprite based on direction
 	if player_controller.direction == 1:
 		sprite.flip_h = false
@@ -14,11 +27,22 @@ func _process(delta):
 	#changes sprite for movement
 	if abs(player_controller.velocity.x) > 0:
 		animation_player.play("move")
-	else:
-		animation_player.play("idle")
+	#else:
+		#animation_player.play("idle")
 	#changes sprite for jump or fall
 	if player_controller.velocity.y < 0:
 		animation_player.play("jump")
 	elif player_controller.velocity.y > 0:
 		animation_player.play("fall")
 	
+func _on_animation_player_animation_finished(anim: StringName) -> void:
+	if anim == "attack1" and second_attack == true:
+		animation_player.play("attack2")
+		second_attack = false
+	elif anim == "attack2" and third_attack == true:
+		animation_player.play("attack3")
+		third_attack = false
+	else:
+		animation_player.play("idle")
+		second_attack = false
+		third_attack = false
