@@ -1,7 +1,175 @@
-[gd_scene load_steps=13 format=3 uid="uid://qrqlnbohumcn"]
+[gd_scene load_steps=16 format=3 uid="uid://qrqlnbohumcn"]
 
 [ext_resource type="Texture2D" uid="uid://dxid3vtoffo4d" path="res://assets/sprites/Skeleton/Idle.png" id="1_aa7ji"]
 [ext_resource type="Texture2D" uid="uid://c32v7b3mxuryb" path="res://assets/sprites/Skeleton/Walk.png" id="2_c7ued"]
+[ext_resource type="Texture2D" uid="uid://uex162embe3w" path="res://assets/sprites/Skeleton/Attack.png" id="2_t7mfl"]
+[ext_resource type="Texture2D" uid="uid://evg3f1lrh8er" path="res://assets/sprites/Skeleton/Attack2.png" id="3_cfvsk"]
+
+[sub_resource type="Animation" id="Animation_3ji61"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(60, 50, 45, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_c7ued")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SkeletonBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hqyy5"]
+resource_name = "attack1"
+length = 1.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(60, 50, 45, 51), Rect2(210, 49, 42, 52), Rect2(353, 44, 36, 57), Rect2(503, 44, 36, 57), Rect2(653, 44, 36, 57), Rect2(808, 44, 31, 57), Rect2(968, 48, 80, 53), Rect2(1118, 47, 81, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_t7mfl")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SkeletonBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-3, 0), Vector2(3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tmcas"]
+resource_name = "attack2"
+length = 1.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(68, 52, 33, 49), Rect2(219, 52, 33, 49), Rect2(369, 50, 34, 51), Rect2(519, 50, 34, 51), Rect2(669, 50, 34, 51), Rect2(812, 49, 35, 52), Rect2(959, 14, 89, 87), Rect2(1109, 14, 89, 87)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cfvsk")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SkeletonBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 2), Vector2(0, 0), Vector2(27, -17)]
+}
+
+[sub_resource type="Animation" id="Animation_su8qn"]
+resource_name = "attack3"
+
+[sub_resource type="Animation" id="Animation_iapan"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_eamm7"]
+resource_name = "hit"
 
 [sub_resource type="Animation" id="Animation_upydk"]
 resource_name = "idle"
@@ -30,6 +198,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_aa7ji")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SkeletonBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_uuxpy"]
@@ -60,47 +252,29 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("2_c7ued")]
 }
-
-[sub_resource type="Animation" id="Animation_hqyy5"]
-resource_name = "attack1"
-
-[sub_resource type="Animation" id="Animation_tmcas"]
-resource_name = "attack2"
-
-[sub_resource type="Animation" id="Animation_su8qn"]
-resource_name = "attack3"
-
-[sub_resource type="Animation" id="Animation_eamm7"]
-resource_name = "hit"
-
-[sub_resource type="Animation" id="Animation_iapan"]
-resource_name = "death"
-
-[sub_resource type="Animation" id="Animation_3ji61"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SkeletonBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(60, 50, 45, 51)]
+"values": [Vector2(-3, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_c7ued")]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mukux"]
@@ -118,6 +292,10 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5tqa"]
 radius = 13.0
 height = 54.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1mly"]
+radius = 18.68076
+height = 51.919754
 
 [node name="Skeleton" type="CharacterBody2D"]
 position = Vector2(8, -26)
@@ -138,3 +316,9 @@ region_rect = Rect2(60, 50, 45, 51)
 position = Vector2(-3, 0)
 shape = SubResource("CapsuleShape2D_e5tqa")
 debug_color = Color(0.85490197, 0.8901961, 0.07058824, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, -3)
+rotation = 7.5921826
+shape = SubResource("CapsuleShape2D_j1mly")
+debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
