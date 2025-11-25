@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bjogn5uwaqhif"]
+
+[sub_resource type="Animation" id="Animation_3ji61"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_hqyy5"]
+resource_name = "attack1"
+
+[sub_resource type="Animation" id="Animation_tmcas"]
+resource_name = "attack2"
+
+[sub_resource type="Animation" id="Animation_su8qn"]
+resource_name = "attack3"
+
+[sub_resource type="Animation" id="Animation_iapan"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_eamm7"]
+resource_name = "hit"
+
+[sub_resource type="Animation" id="Animation_upydk"]
+resource_name = "idle"
+length = 1.2
+step = 0.2
+
+[sub_resource type="Animation" id="Animation_uuxpy"]
+resource_name = "move"
+length = 0.8
+step = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mukux"]
+_data = {
+&"RESET": SubResource("Animation_3ji61"),
+&"attack1": SubResource("Animation_hqyy5"),
+&"attack2": SubResource("Animation_tmcas"),
+&"attack3": SubResource("Animation_su8qn"),
+&"death": SubResource("Animation_iapan"),
+&"hit": SubResource("Animation_eamm7"),
+&"idle": SubResource("Animation_upydk"),
+&"move": SubResource("Animation_uuxpy")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5tqa"]
+radius = 13.0
+height = 54.0
+
+[node name="Entity" type="CharacterBody2D"]
+position = Vector2(8, -26)
+
+[node name="EntityAnimator" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EntityAnimator"]
+libraries = {
+&"": SubResource("AnimationLibrary_mukux")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="EntityAnimator"]
+region_enabled = true
+region_rect = Rect2(60, 50, 45, 51)
+
+[node name="EntityBody" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+shape = SubResource("CapsuleShape2D_e5tqa")
+debug_color = Color(0.85490197, 0.8901961, 0.07058824, 0.41960785)
