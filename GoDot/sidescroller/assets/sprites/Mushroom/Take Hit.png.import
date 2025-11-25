@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7saoeo8itue7"
-path="res://.godot/imported/noBKG_KnightShield_strip.png-eacde310b6914d597779fe28ed4a19bc.ctex"
+uid="uid://iwq7iu3ateeq"
+path="res://.godot/imported/Take Hit.png-2b5fc080ed3f74d7df3fcb39ff6374cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/noBKG_KnightShield_strip.png"
-dest_files=["res://.godot/imported/noBKG_KnightShield_strip.png-eacde310b6914d597779fe28ed4a19bc.ctex"]
+source_file="res://assets/sprites/Mushroom/Take Hit.png"
+dest_files=["res://.godot/imported/Take Hit.png-2b5fc080ed3f74d7df3fcb39ff6374cd.ctex"]
 
 [params]
 

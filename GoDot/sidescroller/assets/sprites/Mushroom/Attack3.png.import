@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcm4plgmw33gu"
-path="res://.godot/imported/noBKG_KnightDeath_strip.png-22794351123c6967b7090ba31c99e1fb.ctex"
+uid="uid://b2kkwr2dmw6r1"
+path="res://.godot/imported/Attack3.png-415fdd294be8306c73124e80c9caac8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/noBKG_KnightDeath_strip.png"
-dest_files=["res://.godot/imported/noBKG_KnightDeath_strip.png-22794351123c6967b7090ba31c99e1fb.ctex"]
+source_file="res://assets/sprites/Mushroom/Attack3.png"
+dest_files=["res://.godot/imported/Attack3.png-415fdd294be8306c73124e80c9caac8b.ctex"]
 
 [params]
 

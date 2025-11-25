@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://dhwmsv1d6u7mv"]
 
-[ext_resource type="Texture2D" uid="uid://dvt4ihfqdfoak" path="res://assets/sprites/noBKG_KnightIdle_strip.png" id="1_rwm0n"]
+[ext_resource type="Texture2D" uid="uid://dvt4ihfqdfoak" path="res://assets/sprites/Player/noBKG_KnightIdle_strip.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://bmtal2x6p6ymr" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
 [ext_resource type="Script" uid="uid://do408k7p7v6ik" path="res://assets/scripts/player_animator.gd" id="2_8sknh"]
-[ext_resource type="Texture2D" uid="uid://dx2n2vtt27pa7" path="res://assets/sprites/noBKG_KnightRun_strip.png" id="4_0gfpk"]
-[ext_resource type="Texture2D" uid="uid://t7w0dkgaaaqw" path="res://assets/sprites/noBKG_KnightJumpAndFall_strip.png" id="5_0hrit"]
-[ext_resource type="Texture2D" uid="uid://cbwdud1gu22vg" path="res://assets/sprites/noBKG_KnightAttack_strip.png" id="6_0gfpk"]
+[ext_resource type="Texture2D" uid="uid://dx2n2vtt27pa7" path="res://assets/sprites/Player/noBKG_KnightRun_strip.png" id="4_0gfpk"]
+[ext_resource type="Texture2D" uid="uid://t7w0dkgaaaqw" path="res://assets/sprites/Player/noBKG_KnightJumpAndFall_strip.png" id="5_0hrit"]
+[ext_resource type="Texture2D" uid="uid://cbwdud1gu22vg" path="res://assets/sprites/Player/noBKG_KnightAttack_strip.png" id="6_0gfpk"]
 
 [sub_resource type="Animation" id="Animation_14505"]
 length = 0.001

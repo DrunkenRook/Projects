@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t7w0dkgaaaqw"
-path="res://.godot/imported/noBKG_KnightJumpAndFall_strip.png-0a7290336fae15a286c970d02b5877c8.ctex"
+uid="uid://sxlp008ns0iw"
+path="res://.godot/imported/Projectile_sprite.png-e8e44cbd85c38b219158be1cea7eea2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/noBKG_KnightJumpAndFall_strip.png"
-dest_files=["res://.godot/imported/noBKG_KnightJumpAndFall_strip.png-0a7290336fae15a286c970d02b5877c8.ctex"]
+source_file="res://assets/sprites/Mushroom/Projectile_sprite.png"
+dest_files=["res://.godot/imported/Projectile_sprite.png-e8e44cbd85c38b219158be1cea7eea2a.ctex"]
 
 [params]
 
