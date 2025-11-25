@@ -24,6 +24,7 @@ func _process(_delta):
 		sprite.flip_h = false
 	elif player_controller.direction == -1:
 		sprite.flip_h = true
+		
 	#changes sprite for movement
 	if abs(player_controller.velocity.x) > 0:
 		animation_player.play("move")

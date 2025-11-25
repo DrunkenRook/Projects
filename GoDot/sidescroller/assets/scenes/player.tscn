@@ -505,6 +505,7 @@ debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
 [node name="SwingDownCollision" type="CollisionShape2D" parent="."]
 position = Vector2(8.999998, -18)
 rotation = -1.0234493
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_0hrit")
 disabled = true
 debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
@@ -512,6 +513,7 @@ debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
 [node name="SwipeCollision" type="CollisionShape2D" parent="."]
 position = Vector2(5.0000005, -17.000002)
 rotation = 1.4487109
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_o5c66")
 disabled = true
 debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
