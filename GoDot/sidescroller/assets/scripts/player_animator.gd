@@ -20,10 +20,10 @@ func _input(event):
 #sprite animation controllers
 func _process(_delta):
 	#flips sprite based on direction
-	if player_controller.direction == 1:
-		sprite.flip_h = false
-	elif player_controller.direction == -1:
-		sprite.flip_h = true
+	#if player_controller.direction == 1:
+		#sprite.flip_h = false
+	#elif player_controller.direction == -1:
+		#sprite.flip_h = true
 		
 	#changes sprite for movement
 	if abs(player_controller.velocity.x) > 0:
