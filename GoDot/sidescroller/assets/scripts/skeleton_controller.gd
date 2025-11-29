@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 60
 @export var gravity = 900
-@export var damage = 10
 
 @onready var floor_detector = $FloorDetector
 @onready var wall_detector = $WallDetector
-@onready var attack_area = $Area2D
+@onready var player_detector = $PlayerDetector
+@onready var attack_collisions = $AttackCollisions
 @onready var cooldown_timer = $CooldownTimer
+@onready var animation_player = $SkeletonAnimator/AnimationPlayer
 
-#Sets state based on detectors
+#Sets state based on detectors --------------------------------------Add more states for more attacks?
 enum State { patrol, attack, cooldown }
 var current_state = State.patrol
 var direction = 1
@@ -27,31 +28,40 @@ func _physics_process(delta):
 		State.attack:
 			attack(delta)
 		State.cooldown:
-			pass
+			cooldown(delta)
 			velocity.x = 0
 	
 	move_and_slide()
 
 func patrol(_delta):
+	animation_player.play("move")
 	velocity.x = speed * direction
 	
 	#Checks for walls and ledges
-	if wall_detector.is_colliding() or not floor_detector.is_colliding():
-		#Handles direction
-		direction *= -1
-		self.scale.x *= -1
+	if is_on_floor():
+		if wall_detector.is_colliding() or not floor_detector.is_colliding():
+			#Handles direction
+			direction *= -1
+			$SkeletonAnimator.scale.x = direction 
+			wall_detector.scale.x = direction
+			floor_detector.position.x = abs(floor_detector.position.x) * direction
+			attack_collisions.scale.x = direction
+			player_detector.scale.x = direction
 
 #Handles attacks
 func attack(_delta):
 	velocity.x = 0 #Must stop moving to attack -------------------------- Change depending on enemy
-	$AnimationPlayer.play("attack1")
+	animation_player.play("attack1")
+
+func cooldown(_delta):
+	animation_player.play("idle")
 
 func attack_area_entered(body):
-	if body.name == "PlayerBody" and current_state != State.cooldown:
+	if body.is_in_group("PlayerHitbox") and current_state != State.cooldown:
 		current_state = State.attack
 
 func attack_area_exited(body):
-	if body.name == "PlayerBody":
+	if body.is_in_group("PlayerHitbox"):
 		current_state = State.cooldown
 		cooldown_timer.start()
 

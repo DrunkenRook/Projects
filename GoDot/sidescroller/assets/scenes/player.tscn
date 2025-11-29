@@ -547,7 +547,7 @@ height = 46.144753
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s027a"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D"]
 collision_mask = 768
 script = ExtResource("1_s027a")
 speed = 5

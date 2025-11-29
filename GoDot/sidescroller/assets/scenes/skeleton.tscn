@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qrqlnbohumcn"]
+[gd_scene load_steps=22 format=3 uid="uid://qrqlnbohumcn"]
 
 [ext_resource type="Script" uid="uid://bmvv352wll2k6" path="res://assets/scripts/skeleton_controller.gd" id="1_0gnoo"]
 [ext_resource type="Texture2D" uid="uid://dxid3vtoffo4d" path="res://assets/sprites/Skeleton/Idle.png" id="1_aa7ji"]
@@ -114,7 +114,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../SkeletonBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -179,7 +179,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../SkeletonBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -255,7 +255,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("../SkeletonBody:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -308,7 +308,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("../SkeletonBody:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -361,7 +361,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath("../SkeletonBody:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -402,7 +402,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../SkeletonBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -455,7 +455,7 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("../SkeletonBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
@@ -494,6 +494,9 @@ _data = {
 radius = 13.0
 height = 54.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gnoo"]
+size = Vector2(54.82758, 58.62068)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1mly"]
 radius = 18.68076
 height = 51.919754
@@ -504,7 +507,7 @@ height = 80.61018
 
 [node name="Skeleton" type="CharacterBody2D"]
 position = Vector2(8, -26)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.58, 0.58)
 script = ExtResource("1_0gnoo")
 
 [node name="SkeletonAnimator" type="Node2D" parent="."]
@@ -525,7 +528,7 @@ shape = SubResource("CapsuleShape2D_e5tqa")
 debug_color = Color(0.85490197, 0.8901961, 0.07058824, 0.41960785)
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2(22, 0)
+position = Vector2(12, 4)
 target_position = Vector2(0, 26)
 collision_mask = 768
 collide_with_areas = true
@@ -533,27 +536,36 @@ collide_with_areas = true
 [node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(4, 0)
 target_position = Vector2(24, 0)
+collision_mask = 768
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(31.206902, -8.620693)
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_0gnoo")
+debug_color = Color(0.7061581, 0.48595482, 0.14647552, 0.41960785)
+
 [node name="AttackCollisions" type="Area2D" parent="."]
 
 [node name="Swipe" type="CollisionShape2D" parent="AttackCollisions"]
-position = Vector2(32, -3)
+position = Vector2(32.000004, -3)
 rotation = 1.3089974
+scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CapsuleShape2D_j1mly")
 disabled = true
 debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 
 [node name="SwingUp" type="CollisionShape2D" parent="AttackCollisions"]
-position = Vector2(32, -23)
+position = Vector2(32.000004, -23)
 rotation = -0.7853982
-scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_0gnoo")
 disabled = true
 debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 
 [connection signal="timeout" from="CooldownTimer" to="." method="cooldown_finished"]
-[connection signal="body_entered" from="AttackCollisions" to="." method="attack_area_entered"]
-[connection signal="body_exited" from="AttackCollisions" to="." method="attack_area_exited"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="attack_area_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="attack_area_exited"]

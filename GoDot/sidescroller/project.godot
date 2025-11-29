@@ -25,7 +25,7 @@ project/assembly_name="sidescroller"
 
 [global_group]
 
-Player=""
+PlayerHitbox=""
 
 [input]
 
