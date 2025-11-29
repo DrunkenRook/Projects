@@ -14,7 +14,7 @@ var direction_tracker = 1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _input(event):
-	# Handle jump.
+	# Handle jump
 	if event.is_action_pressed("jump") and is_on_floor():
 		velocity.y = jump_power * jump_multiplier
 	#Handle drop
@@ -24,7 +24,7 @@ func _input(event):
 		set_collision_mask_value(10, true)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

@@ -23,6 +23,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="sidescroller"
 
+[global_group]
+
+Player=""
+
 [input]
 
 move_left={

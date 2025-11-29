@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://rgpcf4j8aac0"]
+[gd_scene load_steps=18 format=4 uid="uid://rgpcf4j8aac0"]
 
 [ext_resource type="Texture2D" uid="uid://bek1r6xpnhkag" path="res://assets/sprites/tiles/BG_1.png" id="1_ka6na"]
 [ext_resource type="Texture2D" uid="uid://dwlueo231yg5e" path="res://assets/sprites/tiles/BG_2.png" id="2_4k2ok"]
 [ext_resource type="Texture2D" uid="uid://cyr2crpfe0u4b" path="res://assets/sprites/tiles/BG_3.png" id="3_d133c"]
 [ext_resource type="Texture2D" uid="uid://cgch0bj7ukq1a" path="res://assets/sprites/tiles/Terrain_and_Props.png" id="5_5f0af"]
+[ext_resource type="PackedScene" uid="uid://qrqlnbohumcn" path="res://assets/scenes/skeleton.tscn" id="6_ka6na"]
 [ext_resource type="PackedScene" uid="uid://dhwmsv1d6u7mv" path="res://assets/scenes/player.tscn" id="6_q28fi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ka6na"]
@@ -7934,3 +7935,7 @@ tile_set = SubResource("TileSet_hmqnu")
 position = Vector2(264, -3)
 tile_map_data = PackedByteArray("AAD9//3/AAAAABMAAAD9//7/AAAAABQAAAD9////AAAAABUAAAD+//3/AAABABMAAAD+//7/AAABABQAAAD+////AAABABUAAAAeAP//AAAAABcAAAAfAP//AAABABcAAAAmAP3/AAAEABMAAAAmAP7/AAAEABQAAAAmAP//AAAEABUAAAAnAP3/AAAFABMAAAAnAP7/AAAFABQAAAAnAP//AAAFABUAAAAoAP7/AAAGABQAAAAoAP//AAAGABUAAAAzAP3/AAARABMAAAAzAP7/AAARABQAAAAzAP//AAARABUAAAA0AP3/AAASABMAAAA0AP7/AAASABQAAAA0AP//AAASABUAAAA1AP//AAATABUAAAAyAP7/AAAQABQAAAAJAP7/AAACABYAAAAJAP//AAACABcAAAAKAP7/AAADABYAAAAKAP//AAADABcAAAALAP7/AAAEABYAAAALAP//AAAEABcAAAAMAP//AAAFABcAAABuAPz/AAAQAAMAAABuAP3/AAAMAAQAAABuAP7/AAAMAAUAAABuAP//AAAQAAQAAABuAAAAAAAQAAUAAABtAP//AAAPAAQAAABtAAAAAAAPAAUAAABvAAAAAAARAAQAAABwAAAAAAARAAQAAABxAAAAAAANAAUAAABvAP3/AAAQAAIAAABvAP//AAARAAUAAABwAP7/AAAOAAIAAAByAP7/AAAQAAIAAABvAP7/AAANAAQAAABwAP//AAANAAQAAABxAP//AAANAAQAAABxAP7/AAANAAQAAABwAP3/AAANAAQAAAByAP//AAANAAQAAAByAAAAAAANAAQAAABvAPz/AAANAAQAAABuAPv/AAANAAQAAABvAPv/AAANAAQAAABwAPv/AAANAAQAAABxAPv/AAANAAQAAAByAPv/AAANAAQAAABzAPv/AAANAAQAAAB0APv/AAANAAQAAAB0APz/AAANAAQAAAB0AP3/AAANAAQAAAB0AP7/AAANAAQAAAB0AP//AAANAAQAAAB0AAAAAAANAAQAAABzAAAAAAANAAQAAABzAP//AAANAAQAAABzAP7/AAANAAQAAABzAP3/AAANAAQAAABzAPz/AAANAAQAAAByAPz/AAANAAQAAABxAPz/AAANAAQAAABwAPz/AAANAAQAAABxAP3/AAANAAQAAAByAP3/AAANAAQAAABtAPz/AAAPAAMAAABtAPv/AAAPAAIAAAA=")
 tile_set = SubResource("TileSet_ka6na")
+
+[node name="Skeleton" parent="." instance=ExtResource("6_ka6na")]
+position = Vector2(120, -64)
+collision_mask = 768
