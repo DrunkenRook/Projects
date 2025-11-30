@@ -547,7 +547,7 @@ height = 46.144753
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s027a"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["PlayerHitbox"]]
 collision_mask = 768
 script = ExtResource("1_s027a")
 speed = 5
@@ -600,7 +600,7 @@ shape = SubResource("CapsuleShape2D_o5c66")
 disabled = true
 debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
 
-[node name="PlayerBody" type="CollisionShape2D" parent="."]
+[node name="PlayerBody" type="CollisionShape2D" parent="." groups=["PlayerHitbox"]]
 position = Vector2(1, -15)
 shape = SubResource("CapsuleShape2D_s027a")
 debug_color = Color(0.73979276, 0.23422903, 0.9874403, 0.41960785)
