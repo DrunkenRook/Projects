@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'card_detail.dart';
 import 'deck_manager.dart';
+import 'auth.dart';
 
 class CardSearch extends StatefulWidget
 {
@@ -264,7 +265,10 @@ class CardSearchState extends State<CardSearch>
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             tooltip: 'User',
-            onPressed: () {}, // placeholder for user details
+            onPressed: () async {
+              final changed = await showAuthDialog(context);
+              if (changed == true) setState(() {});
+            },
           ),
         ],
       ),

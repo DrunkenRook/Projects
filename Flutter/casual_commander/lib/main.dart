@@ -3,6 +3,7 @@ import 'pages/rulebook.dart';
 import 'pages/card_search.dart';
 import 'pages/deck_library.dart';
 import 'pages/deck_manager.dart';
+import 'pages/auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +48,9 @@ class HomePage extends StatelessWidget
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             tooltip: 'User',
-            onPressed: () {}, // placeholder for user details
+            onPressed: () async {
+              await showAuthDialog(context);
+            },
           ),
         ],
       ),

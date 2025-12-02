@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'auth.dart';
 
 class CardDetail extends StatelessWidget
 {
@@ -31,7 +32,9 @@ class CardDetail extends StatelessWidget
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             tooltip: 'User',
-            onPressed: () {}, // placeholder for user details
+            onPressed: () async {
+              await showAuthDialog(context);
+            }, // placeholder for user details
           ),
         ],
       ),

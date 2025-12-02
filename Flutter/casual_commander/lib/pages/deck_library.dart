@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'deck_manager.dart';
 import 'deck_detail.dart';
+import 'auth.dart';
 
 class DeckLibrary extends StatefulWidget {
   const DeckLibrary({super.key});
@@ -46,7 +47,10 @@ class _DeckLibraryState extends State<DeckLibrary> {
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             tooltip: 'User',
-            onPressed: () {}, // placeholder for user details
+            onPressed: () async {
+              final changed = await showAuthDialog(context);
+              if (changed == true) setState(() {});
+            }, // opens auth dialog
           ),
         ],
       ),
@@ -59,13 +63,12 @@ class _DeckLibraryState extends State<DeckLibrary> {
                   children: [
                     const Text('--No Decks--', style: TextStyle(color: Colors.white)),
                     const SizedBox(height: 12),
-                    ElevatedButton(onPressed: _createDeck, child: const Text('Create Deck')),
                   ],
                 ),
               )
             : ListView.separated(
                 itemCount: _decks.length,
-                separatorBuilder: (_, __) => const Divider(color: Colors.white24),
+                separatorBuilder: (_, __) => const Divider(color: Colors.white30),
                 itemBuilder: (context, index) 
                 {
                   final deck = _decks[index];

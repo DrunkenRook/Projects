@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'auth.dart';
 
 class Rulebook extends StatefulWidget 
 {
@@ -101,7 +102,10 @@ class RulebookState extends State<Rulebook>
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
             tooltip: 'User',
-            onPressed: () {}, // placeholder for user details
+            onPressed: () async {
+              final changed = await showAuthDialog(context);
+              if (changed == true) setState(() {});
+            },
           ),
         ],
       ),

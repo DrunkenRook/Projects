@@ -27,7 +27,14 @@ class DeckManager
 
   final List<Deck> _decks = [];
 
+  // users: email -> { 'password': string, 'decks': List<Map> }
+  final Map<String, Map<String, dynamic>> _users = {};
+
+  String? _currentUserEmail;
+
   List<Deck> get decks => List.unmodifiable(_decks);
+
+  String? get currentUserEmail => _currentUserEmail;
 
   Future<File> _getFile() async 
   {
@@ -42,10 +49,38 @@ class DeckManager
       if (!await file.exists()) return;
       final contents = await file.readAsString();
       if (contents.trim().isEmpty) return;
-      final data = jsonDecode(contents) as List<dynamic>;
+      final dynamic decoded = jsonDecode(contents);
+
+      // Support two formats:
+      // 1) legacy: file contains a List of decks -> load into _decks (no auth)
+      // 2) new: file contains a Map with 'users' and optional 'lastSignedIn'
+
       _decks.clear();
-      for (final d in data) {
-        _decks.add(Deck.fromJson(Map<String, dynamic>.from(d as Map)));
+      _users.clear();
+
+      if (decoded is List) {
+        for (final d in decoded) {
+          _decks.add(Deck.fromJson(Map<String, dynamic>.from(d as Map)));
+        }
+        _currentUserEmail = null;
+      } else if (decoded is Map) {
+        final map = Map<String, dynamic>.from(decoded);
+        final usersRaw = map['users'] as Map<String, dynamic>? ?? {};
+        usersRaw.forEach((email, u) {
+          final uMap = Map<String, dynamic>.from(u as Map);
+          final pw = uMap['password'] as String? ?? '';
+          final decksRaw = uMap['decks'] as List<dynamic>? ?? <dynamic>[];
+          _users[email] = {'password': pw, 'decks': decksRaw};
+        });
+
+        final last = map['lastSignedIn'] as String?;
+        if (last != null && _users.containsKey(last)) {
+          _currentUserEmail = last;
+          final userDecks = _users[last]!['decks'] as List<dynamic>;
+          for (final d in userDecks) {
+            _decks.add(Deck.fromJson(Map<String, dynamic>.from(d as Map)));
+          }
+        }
       }
     } 
     catch (e) 
@@ -59,16 +94,72 @@ class DeckManager
     try 
     {
       final file = await _getFile();
-      final data = _decks.map((d) => d.toJson()).toList();
-      await file.writeAsString(jsonEncode(data), mode: FileMode.append, flush: true);
+      // persist users structure if available; otherwise persist legacy decks list
+      if (_users.isEmpty) {
+        final data = _decks.map((d) => d.toJson()).toList();
+        await file.writeAsString(jsonEncode(data));
+        return;
+      }
+
+      final Map<String, dynamic> out = {};
+      final Map<String, dynamic> usersOut = {};
+      _users.forEach((email, u) {
+        usersOut[email] = {
+          'password': u['password'],
+          'decks': u['decks'],
+        };
+      });
+      out['users'] = usersOut;
+      out['lastSignedIn'] = _currentUserEmail;
+
+      await file.writeAsString(jsonEncode(out));
     } catch (e) {
       // ignore
+    }
+  }
+
+  // Auth API
+  Future<bool> signUp(String email, String password) async {
+    if (email.isEmpty || password.isEmpty) return false;
+    if (_users.containsKey(email)) return false;
+    _users[email] = {'password': password, 'decks': <dynamic>[]};
+    _currentUserEmail = email;
+    _decks.clear();
+    await _saveToDisk();
+    return true;
+  }
+
+  Future<bool> signIn(String email, String password) async {
+    if (!_users.containsKey(email)) return false;
+    final u = _users[email]!;
+    if (u['password'] != password) return false;
+    _currentUserEmail = email;
+    _decks.clear();
+    final userDecks = u['decks'] as List<dynamic>? ?? <dynamic>[];
+    for (final d in userDecks) {
+      _decks.add(Deck.fromJson(Map<String, dynamic>.from(d as Map)));
+    }
+    await _saveToDisk();
+    return true;
+  }
+
+  Future<void> signOut() async {
+    _currentUserEmail = null;
+    _decks.clear();
+    await _saveToDisk();
+  }
+
+  // update stored decks for current user before saving
+  void _updateUserDecksBeforeSave() {
+    if (_currentUserEmail != null && _users.containsKey(_currentUserEmail)) {
+      _users[_currentUserEmail]!['decks'] = _decks.map((d) => d.toJson()).toList();
     }
   }
 
   Deck createDeck(String name) {
     final deck = Deck(id: DateTime.now().millisecondsSinceEpoch.toString(), name: name);
     _decks.add(deck);
+    _updateUserDecksBeforeSave();
     _saveToDisk();
     return deck;
   }
@@ -89,6 +180,7 @@ class DeckManager
     final deck = getDeckById(deckId);
     if (deck == null) return;
     deck.cards.add(Map<String, dynamic>.from(card));
+    _updateUserDecksBeforeSave();
     _saveToDisk();
   }
 
@@ -99,6 +191,7 @@ class DeckManager
     if (index >= 0 && index < deck.cards.length) 
     {
       deck.cards.removeAt(index);
+      _updateUserDecksBeforeSave();
       _saveToDisk();
     }
   }
