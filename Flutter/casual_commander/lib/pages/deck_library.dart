@@ -68,7 +68,7 @@ class _DeckLibraryState extends State<DeckLibrary> {
               )
             : ListView.separated(
                 itemCount: _decks.length,
-                separatorBuilder: (_, __) => const Divider(color: Colors.white30),
+                separatorBuilder: (_, _) => const Divider(color: Colors.white30),
                 itemBuilder: (context, index) 
                 {
                   final deck = _decks[index];
