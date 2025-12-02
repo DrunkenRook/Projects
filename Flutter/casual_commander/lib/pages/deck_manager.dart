@@ -32,7 +32,7 @@ class DeckManager
   Future<File> _getFile() async 
   {
     final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}${Platform.pathSeparator}decks.txt');
+    return File('${dir.path}${Platform.pathSeparator}save_data.txt');
   }
 
   Future<void> loadFromDisk() async 
