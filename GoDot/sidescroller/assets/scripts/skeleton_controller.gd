@@ -54,8 +54,7 @@ func attack(_delta):
 	animation_player.play("attack1")
 
 func cooldown(_delta):
-	pass
-	#animation_player.play("idle")
+	animation_player.queue("idle")
 
 func attack_area_entered(body):
 	if body.is_in_group("PlayerHitbox") and current_state != State.cooldown:
