@@ -86,8 +86,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_hqyy5"]
 resource_name = "attack1"
-length = 1.4
-step = 0.2
+length = 1.15
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +95,10 @@ tracks/0/path = NodePath("Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857143, 0.5714286, 0.71428573, 0.85714287, 1, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Rect2(60, 50, 45, 51), Rect2(210, 49, 42, 52), Rect2(353, 44, 36, 57), Rect2(503, 44, 36, 57), Rect2(653, 44, 36, 57), Rect2(808, 44, 31, 57), Rect2(968, 48, 80, 53), Rect2(1118, 47, 81, 54)]
+"values": [Rect2(60, 50, 45, 51), Rect2(210, 49, 42, 52), Rect2(353, 44, 36, 57), Rect2(503, 44, 36, 57), Rect2(653, 44, 36, 57), Rect2(808, 44, 31, 57), Rect2(968, 48, 80, 53), Rect2(1118, 47, 81, 54), Rect2(60, 50, 45, 51)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -119,10 +119,10 @@ tracks/2/path = NodePath("../SkeletonBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2857143, 0.85714287, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-3, 0), Vector2(-9, -3), Vector2(3, 0)]
+"values": [Vector2(-3, 0), Vector2(-9, -3), Vector2(3, 0), Vector2(-3, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -131,10 +131,10 @@ tracks/3/path = NodePath("Sprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.71428573, 0.85714287, 1, 1.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(0, 0.5), Vector2(-1.5, 0), Vector2(-10, -2.5), Vector2(-7.5, -2.5), Vector2(22, -0.5), Vector2(22.5, -1)]
+"values": [Vector2(0, 0.5), Vector2(-1.5, 0), Vector2(-10, -2.5), Vector2(-7.5, -2.5), Vector2(22, -0.5), Vector2(22.5, -1), Vector2(0, 0.5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -143,7 +143,7 @@ tracks/4/path = NodePath("../AttackCollisions/Swipe:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.4),
+"times": PackedFloat32Array(0, 0.85714287, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -649,7 +649,7 @@ debug_color = Color(0.7061581, 0.48595482, 0.14647552, 0.41960785)
 [node name="AttackCollisions" type="Area2D" parent="."]
 collision_mask = 768
 
-[node name="Swipe" type="CollisionShape2D" parent="AttackCollisions"]
+[node name="Swipe" type="CollisionShape2D" parent="AttackCollisions" groups=["enemy_attack"]]
 position = Vector2(32.000004, -3)
 rotation = 1.3089974
 scale = Vector2(1.0000001, 1.0000001)
@@ -657,7 +657,7 @@ shape = SubResource("CapsuleShape2D_j1mly")
 disabled = true
 debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 
-[node name="SwingUp" type="CollisionShape2D" parent="AttackCollisions"]
+[node name="SwingUp" type="CollisionShape2D" parent="AttackCollisions" groups=["enemy_attack"]]
 position = Vector2(32.000004, -23)
 rotation = -0.7853982
 shape = SubResource("CapsuleShape2D_0gnoo")
@@ -667,3 +667,4 @@ debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 [connection signal="timeout" from="CooldownTimer" to="." method="cooldown_finished"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="attack_area_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="attack_area_exited"]
+[connection signal="body_entered" from="AttackCollisions" to="." method="attack_entered"]

@@ -26,6 +26,7 @@ project/assembly_name="sidescroller"
 [global_group]
 
 PlayerHitbox=""
+enemy_attack=""
 
 [input]
 

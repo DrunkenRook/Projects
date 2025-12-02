@@ -4,13 +4,13 @@ class_name PlayerController
 @export var speed = 10
 @export var jump_power = 10
 @export var animation_player : AnimationPlayer
-
+@onready var i_frames = $IFrames
+@onready var health = 3
 
 var speed_multiplier = 30
 var jump_multiplier = -30
 var direction = 1
 var direction_tracker = 1
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _input(event):
@@ -24,10 +24,12 @@ func _input(event):
 		set_collision_mask_value(10, true)
 
 func _physics_process(delta: float) -> void:
+	
+	if health <= 0:
+		self.gameover()
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	# Get the input direction and handle the movement/deceleration and sprite/collision flips
 	if direction != 0:
 		direction_tracker = direction
@@ -41,3 +43,17 @@ func _physics_process(delta: float) -> void:
 		
 
 	move_and_slide()
+	
+func player_hit(body: Node2D) -> void:
+	if body.is_in_group("enemy_attack") and not i_frames:
+		self.damage(1)
+		i_frames.start()
+
+func damage(dmg):
+	health -= dmg
+
+func heal(amt):
+	health += amt
+
+func gameover():
+	pass

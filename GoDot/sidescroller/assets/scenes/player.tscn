@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhwmsv1d6u7mv"]
+[gd_scene load_steps=21 format=3 uid="uid://dhwmsv1d6u7mv"]
 
 [ext_resource type="Texture2D" uid="uid://dvt4ihfqdfoak" path="res://assets/sprites/Player/noBKG_KnightIdle_strip.png" id="1_rwm0n"]
 [ext_resource type="Script" uid="uid://bmtal2x6p6ymr" path="res://assets/scripts/player_controller.gd" id="1_s027a"]
@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dx2n2vtt27pa7" path="res://assets/sprites/Player/noBKG_KnightRun_strip.png" id="4_0gfpk"]
 [ext_resource type="Texture2D" uid="uid://t7w0dkgaaaqw" path="res://assets/sprites/Player/noBKG_KnightJumpAndFall_strip.png" id="5_0hrit"]
 [ext_resource type="Texture2D" uid="uid://cbwdud1gu22vg" path="res://assets/sprites/Player/noBKG_KnightAttack_strip.png" id="6_0gfpk"]
+[ext_resource type="Texture2D" uid="uid://c5b4mfh7ffucn" path="res://assets/sprites/Health/Heart.png" id="7_0hrit"]
 
 [sub_resource type="Animation" id="Animation_14505"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,7 +85,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/6/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -100,7 +101,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -112,7 +113,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -148,7 +149,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/4/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -164,7 +165,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -176,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -212,7 +213,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/4/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -228,7 +229,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -240,7 +241,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -276,7 +277,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/4/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -292,7 +293,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -304,7 +305,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -328,7 +329,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/3/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -345,7 +346,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -357,7 +358,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -417,7 +418,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/6/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -434,7 +435,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -446,7 +447,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -470,7 +471,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerAnimator/Sprite2D:position")
+tracks/3/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -487,7 +488,7 @@ step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -499,7 +500,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/1/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -561,7 +562,7 @@ position_smoothing_speed = 8.0
 script = ExtResource("2_8sknh")
 player_controller = NodePath("..")
 animation_player = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite2D")
+sprite = NodePath("PlayerSprite")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
 root_node = NodePath("../..")
@@ -570,11 +571,13 @@ libraries = {
 }
 speed_scale = 1.2
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerAnimator"]
 position = Vector2(2, -14)
 texture = ExtResource("1_rwm0n")
 region_enabled = true
 region_rect = Rect2(23, 14, 24, 30)
+
+[node name="HealthSprite" type="Sprite2D" parent="PlayerAnimator"]
 
 [node name="AttackCollisions" type="Area2D" parent="PlayerAnimator"]
 
@@ -600,9 +603,51 @@ shape = SubResource("CapsuleShape2D_o5c66")
 disabled = true
 debug_color = Color(0.9254902, 0.16862746, 0.20392157, 0.41960785)
 
-[node name="PlayerBody" type="CollisionShape2D" parent="." groups=["PlayerHitbox"]]
+[node name="PlayerBody" type="CollisionShape2D" parent="."]
 position = Vector2(1, -15)
 shape = SubResource("CapsuleShape2D_s027a")
 debug_color = Color(0.73979276, 0.23422903, 0.9874403, 0.41960785)
 
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="HitboxBody" type="CollisionShape2D" parent="PlayerHitbox" groups=["PlayerHitbox"]]
+position = Vector2(1, -15)
+shape = SubResource("CapsuleShape2D_s027a")
+debug_color = Color(0.73979276, 0.23422903, 0.9874403, 0.41960785)
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="HealthBar" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeartOne" type="TextureRect" parent="HealthBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartOne"]
+position = Vector2(-272, -149)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_0hrit")
+
+[node name="HeartTwo" type="TextureRect" parent="HealthBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartTwo"]
+position = Vector2(-256, -149)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_0hrit")
+
+[node name="HeartThree" type="TextureRect" parent="HealthBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartThree"]
+position = Vector2(-240.00002, -149)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_0hrit")
+
 [connection signal="animation_finished" from="PlayerAnimator/AnimationPlayer" to="PlayerAnimator" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="PlayerHitbox" to="." method="player_hit"]

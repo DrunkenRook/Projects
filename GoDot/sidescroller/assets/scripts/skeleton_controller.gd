@@ -67,3 +67,4 @@ func attack_area_exited(body):
 
 func cooldown_finished():
 	current_state = State.patrol
+	
