@@ -96,7 +96,7 @@ class RulebookState extends State<Rulebook>
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
         title: const Text('Rulebook', style: TextStyle(color: Colors.white)),
-        backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        backgroundColor: const Color.fromARGB(255, 45, 12, 62),
         actions: [
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),

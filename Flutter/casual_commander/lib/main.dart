@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'pages/rulebook.dart';
 import 'pages/card_search.dart';
 import 'pages/deck_library.dart';
+import 'pages/deck_manager.dart';
 
-void main() => runApp(const MyApp()); //Tells main to use runApp on MyApp
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DeckManager.instance.loadFromDisk();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget //Initializes MyApp as a StatellessWidget
 {
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget //Initializes MyApp as a StatellessWidget
       theme: ThemeData(
         scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color.fromARGB(255, 40, 38, 38),
+          backgroundColor: Color.fromARGB(255, 45, 12, 62),
           foregroundColor: Colors.white,
         ),
       ),

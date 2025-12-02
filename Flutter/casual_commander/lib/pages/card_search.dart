@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'card_detail.dart';
+import 'deck_manager.dart';
 
 class CardSearch extends StatefulWidget
 {
@@ -137,6 +138,11 @@ class CardSearchState extends State<CardSearch>
                 ),
               );
             },
+            trailing: IconButton(
+              icon: const Icon(Icons.add, color: Colors.white),
+              tooltip: 'Add to deck',
+              onPressed: () => addToDeckPush(card),
+            ),
           );
         }
 
@@ -165,8 +171,83 @@ class CardSearchState extends State<CardSearch>
                   ),
                 );
               },
+              trailing: IconButton(
+                icon: const Icon(Icons.add, color: Colors.white),
+                tooltip: 'Add to deck',
+                onPressed: () => addToDeckPush(card),
+              ),
             );
           }).toList(),
+        );
+      },
+    );
+  }
+
+  Future<void> addToDeckPush(Map<String, dynamic> card) async 
+  {
+    final decks = DeckManager.instance.decks;
+    final newNameController = TextEditingController();
+
+    await showDialog<void>(
+      context: context,
+      builder: (context) 
+      {
+        return AlertDialog(
+          title: const Text('Add to Deck'),
+          backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+          content: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (decks.isEmpty) const Text('hmm, you have no decks yet. Create one below!'),
+                if (decks.isNotEmpty)
+                  Flexible(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: decks.length,
+                      itemBuilder: (context, index) 
+                      {
+                        final deck = decks[index];
+                        return ListTile(
+                          title: Text(deck.name),
+                          onTap: () 
+                          {
+                            DeckManager.instance.addCardToDeck(deck.id, card);
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Added to ${deck.name}')),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: newNameController,
+                  decoration: const InputDecoration(hintText: 'New deck name'),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+            TextButton(
+              onPressed: () 
+              {
+                final name = newNameController.text.trim();
+                if (name.isNotEmpty) 
+                {
+                  final deck = DeckManager.instance.createDeck(name);
+                  DeckManager.instance.addCardToDeck(deck.id, card);
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(this.context).showSnackBar(SnackBar(content: Text('Created ${deck.name} and added card.')));
+                }
+              },
+              child: const Text('Create & Add'),
+            ),
+          ],
         );
       },
     );
@@ -178,7 +259,7 @@ class CardSearchState extends State<CardSearch>
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
         title: const Text('Card Search', style: TextStyle(color: Colors.white)),
-        backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+        backgroundColor: const Color.fromARGB(255, 45, 12, 62),
         actions: [
           IconButton(
             icon: const Icon(Icons.person, color: Colors.white),
@@ -228,7 +309,7 @@ class CardSearchState extends State<CardSearch>
               const SizedBox(height: 12),
               Text(
                 'Searched: $storedText',
-                style: const TextStyle(color: Colors.white70),
+                style: const TextStyle(color: Color.fromARGB(255, 40, 38, 38)),
               ),
               const SizedBox(height: 12),
               // Results list takes remaining space and is scrollable
