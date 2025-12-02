@@ -193,14 +193,14 @@ class CardSearchState extends State<CardSearch>
       builder: (context) 
       {
         return AlertDialog(
-          title: const Text('Add to Deck'),
-          backgroundColor: const Color.fromARGB(255, 40, 38, 38),
+          title: const Text('Add to Deck', style: TextStyle(color: Colors.white)),
+          backgroundColor: const Color.fromARGB(255, 45, 12, 62),
           content: SizedBox(
             width: double.maxFinite,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (decks.isEmpty) const Text('hmm, you have no decks yet. Create one below!'),
+                if (decks.isEmpty) const Text('hmm, you have no decks yet. Create one below!', style: TextStyle(color: Colors.white)),
                 if (decks.isNotEmpty)
                   Flexible(
                     child: ListView.builder(
@@ -210,7 +210,7 @@ class CardSearchState extends State<CardSearch>
                       {
                         final deck = decks[index];
                         return ListTile(
-                          title: Text(deck.name),
+                          title: Text(deck.name, style: TextStyle(color: Colors.white)),
                           onTap: () 
                           {
                             DeckManager.instance.addCardToDeck(deck.id, card);

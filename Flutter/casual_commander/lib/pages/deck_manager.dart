@@ -4,11 +4,11 @@ import 'package:path_provider/path_provider.dart';
 
 class Deck 
 {
-  final String id;
-  String name;
-  final List<Map<String, dynamic>> cards;
+  final String id; //identifier for specific decks
+  String name; //user inpur name for deck
+  final List<Map<String, dynamic>> cards; //card list for deck
 
-  Deck({required this.id, required this.name, List<Map<String, dynamic>>? cards}) : cards = cards ?? [];
+  Deck({required this.id, required this.name, List<Map<String, dynamic>>? cards}) : cards = cards ?? [];//deck requires id and name but can start with or without cards
 
   Map<String, dynamic> toJson() => {'id': id, 'name': name, 'cards': cards};
 
@@ -60,7 +60,7 @@ class DeckManager
     {
       final file = await _getFile();
       final data = _decks.map((d) => d.toJson()).toList();
-      await file.writeAsString(jsonEncode(data));
+      await file.writeAsString(jsonEncode(data), mode: FileMode.append, flush: true);
     } catch (e) {
       // ignore
     }
