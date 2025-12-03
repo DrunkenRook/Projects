@@ -6,6 +6,13 @@ extends Node2D
 
 var second_attack = false
 var third_attack = false
+var hearts_list : Array[TextureRect]
+var health = 3
+
+func _ready() -> void:
+	for child in $HealthBar/HBoxContainer.get_children():
+		hearts_list.append(child)
+	print(hearts_list)
 
 func _input(event):
 	#Handles attacks
@@ -42,3 +49,11 @@ func _on_animation_player_animation_finished(anim: StringName) -> void:
 		animation_player.play("idle")
 		second_attack = false
 		third_attack = false
+
+func update_hearts():
+	for i in range(hearts_list.size()):
+		hearts_list[i].visible = i < health
+
+func health_change(temp):
+	health = temp
+	update_hearts()

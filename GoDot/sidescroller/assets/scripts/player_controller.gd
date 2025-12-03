@@ -3,22 +3,17 @@ class_name PlayerController
 
 @export var speed = 10
 @export var jump_power = 10
-@export var animation_player : AnimationPlayer
-@onready var i_frames = $IFrames
-@onready var health = 3
+#@export var animation_player : AnimationPlayer
+@export var health = 3
 
 var speed_multiplier = 30
 var jump_multiplier = -30
 var direction = 1
 var direction_tracker = 1
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hearts_list : Array[TextureRect]
+#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var alive = true
 
-func _ready() -> void:
-	for child in $HealthBar/HBoxContainer.get_children():
-		hearts_list.append(child)
-	print(hearts_list)
+signal health_change(int)
 
 func _input(event):
 	# Handle jump
@@ -52,26 +47,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func player_hit(body: Node2D) -> void:
-	if body.is_in_group("enemy_attack") and not i_frames:
-		self.damage(1)
-		i_frames.start()
+	if body.is_in_group("enemy_attack") and $IFrames.is_stopped():
+		damage(1)
 
 func damage(dmg):
 	if health > 0:
 		health -= dmg
-		update_hearts()
+		$IFrames.start()
+		health_change.emit(health)
 	elif health <= 0:
 		gameover()
 
 func heal(amt):
 	health += amt
-	update_hearts()
+	health_change.emit(health)
 
 func gameover():
 	alive = false
-	self.get_tree().paused = true
+	get_tree().paused = true
 	#play death animation and game over screen?
-
-func update_hearts():
-	for i in range(hearts_list.size()):
-		hearts_list[i].visible = i < health

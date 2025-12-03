@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var attack_collisions = $AttackCollisions
 @onready var cooldown_timer = $CooldownTimer
 @onready var animation_player = $SkeletonAnimator/AnimationPlayer
+@onready var skeleton_animator = $SkeletonAnimator
 
 #Sets state based on detectors --------------------------------------Add more states for more attacks?
 enum State { patrol, attack, cooldown }
@@ -42,7 +43,7 @@ func patrol(_delta):
 		if wall_detector.is_colliding() or not floor_detector.is_colliding():
 			#Handles direction
 			direction *= -1
-			$SkeletonAnimator.scale.x = direction 
+			skeleton_animator.scale.x = direction 
 			wall_detector.scale.x = direction
 			floor_detector.position.x = abs(floor_detector.position.x) * direction
 			attack_collisions.scale.x = direction
