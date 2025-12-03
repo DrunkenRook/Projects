@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 func player_hit(body: Node2D) -> void:
 	if body.is_in_group("enemy_attack") and $IFrames.is_stopped():
+		print_debug("player hit")
 		damage(1)
 
 func damage(dmg):
@@ -56,6 +57,7 @@ func damage(dmg):
 		$IFrames.start()
 		health_change.emit(health)
 	elif health <= 0:
+		print_debug("gameover")
 		gameover()
 
 func heal(amt):

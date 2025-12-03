@@ -56,4 +56,5 @@ func update_hearts():
 
 func health_change(temp):
 	health = temp
+	print_debug(health)
 	update_hearts()

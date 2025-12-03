@@ -581,10 +581,11 @@ region_rect = Rect2(23, 14, 24, 30)
 [node name="HealthBar" type="CanvasLayer" parent="PlayerAnimator"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerAnimator/HealthBar"]
-offset_left = -21.0
-offset_top = -50.0
-offset_right = 20.0
-offset_bottom = -41.0
+offset_left = -277.0
+offset_top = -153.0
+offset_right = -236.0
+offset_bottom = -144.0
+scale = Vector2(1.5, 1.5)
 
 [node name="HeartOne" type="TextureRect" parent="PlayerAnimator/HealthBar/HBoxContainer"]
 layout_mode = 2
