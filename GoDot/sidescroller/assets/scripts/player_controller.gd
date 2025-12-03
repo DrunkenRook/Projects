@@ -12,6 +12,13 @@ var jump_multiplier = -30
 var direction = 1
 var direction_tracker = 1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var hearts_list : Array[TextureRect]
+var alive = true
+
+func _ready() -> void:
+	for child in $HealthBar/HBoxContainer.get_children():
+		hearts_list.append(child)
+	print(hearts_list)
 
 func _input(event):
 	# Handle jump
@@ -24,9 +31,9 @@ func _input(event):
 		set_collision_mask_value(10, true)
 
 func _physics_process(delta: float) -> void:
-	
-	if health <= 0:
-		self.gameover()
+	#3 is max health
+	if health > 3:
+		health = 3
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -50,10 +57,21 @@ func player_hit(body: Node2D) -> void:
 		i_frames.start()
 
 func damage(dmg):
-	health -= dmg
+	if health > 0:
+		health -= dmg
+		update_hearts()
+	elif health <= 0:
+		gameover()
 
 func heal(amt):
 	health += amt
+	update_hearts()
 
 func gameover():
-	pass
+	alive = false
+	self.get_tree().paused = true
+	#play death animation and game over screen?
+
+func update_hearts():
+	for i in range(hearts_list.size()):
+		hearts_list[i].visible = i < health

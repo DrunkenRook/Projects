@@ -97,7 +97,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_0hrit"]
 resource_name = "attack1"
-step = 0.2
+length = 0.72
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,7 +106,7 @@ tracks/0/path = NodePath("PlayerAnimator/PlayerSprite:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857143, 0.5714286, 0.71428573),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Rect2(343, 14, 24, 30), Rect2(487, 15, 21, 29), Rect2(631, 15, 21, 29), Rect2(775, 16, 41, 28), Rect2(919, 16, 37, 28), Rect2(1063, 16, 37, 28)]
@@ -129,7 +130,7 @@ tracks/2/path = NodePath("PlayerBody:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.42857143),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(1, -15), Vector2(4, -15)]
@@ -141,7 +142,7 @@ tracks/3/path = NodePath("PlayerAnimator/AttackCollisions/Stab:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
+"times": PackedFloat32Array(0, 0.42857143, 0.71428573),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -153,7 +154,7 @@ tracks/4/path = NodePath("PlayerAnimator/PlayerSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.14285715, 0.42857143, 0.5714286),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2(2, -15), Vector2(1, -14.5), Vector2(11, -14), Vector2(9, -14)]
@@ -622,14 +623,15 @@ one_shot = true
 [node name="HealthBar" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HealthBar"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 8.0
 
 [node name="HeartOne" type="TextureRect" parent="HealthBar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartOne"]
-position = Vector2(-272, -149)
+physics_interpolation_mode = 2
+top_level = true
+position = Vector2(-18.75, -49.25)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0hrit")
 
@@ -637,7 +639,8 @@ texture = ExtResource("7_0hrit")
 layout_mode = 2
 
 [node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartTwo"]
-position = Vector2(-256, -149)
+z_index = 2
+position = Vector2(-2.75, -49.25)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0hrit")
 
@@ -645,7 +648,8 @@ texture = ExtResource("7_0hrit")
 layout_mode = 2
 
 [node name="Heart" type="Sprite2D" parent="HealthBar/HBoxContainer/HeartThree"]
-position = Vector2(-240.00002, -149)
+z_index = 2
+position = Vector2(13.249985, -49.25)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0hrit")
 
