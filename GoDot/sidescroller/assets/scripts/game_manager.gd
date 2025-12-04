@@ -13,14 +13,18 @@ func next_level():
 	get_tree().change_scene_to_file(full_path)
 	set_up_area()
 
+func gameover():
+	get_tree().change_scene_to_file("res://assets/scenes/areas/gameover_screen")
+
 func set_up_area():
-	reset_keys()
+	pass
+	#reset_keys()
 
 func add_key():
 	keys += 1
 	if keys >= 3:
-		var portal = get_tree().get_first_node_in_group("Exits") as ExitTrigger
-		portal.open()
+		var exit = get_tree().get_first_node_in_group("Exits") as ExitTrigger
+		exit.open()
 
 func reset_keys():
 	keys = 0
