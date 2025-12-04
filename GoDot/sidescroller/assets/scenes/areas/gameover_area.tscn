@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=4 uid="uid://dlyrv5cwtq04q"]
 
-[ext_resource type="Texture2D" uid="uid://cgch0bj7ukq1a" path="res://assets/sprites/tiles/Terrain_and_Props.png" id="1_lek3t"]
-[ext_resource type="FontFile" uid="uid://bu167acquwvoy" path="res://assets/fonts/Angel Code Format (v1.2)/Varnished (White)/Varnished (White).fnt" id="2_xa5ym"]
+[ext_resource type="Texture2D" uid="uid://cgch0bj7ukq1a" path="res://assets/sprites/tiles/Terrain_and_Props.png" id="1_spnfv"]
+[ext_resource type="FontFile" uid="uid://bu167acquwvoy" path="res://assets/fonts/Angel Code Format (v1.2)/Varnished (White)/Varnished (White).fnt" id="2_7oa8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ikogq"]
-texture = ExtResource("1_lek3t")
+texture = ExtResource("1_spnfv")
 0:0/0 = 0
 6:0/0 = 0
 7:0/0 = 0
@@ -401,7 +401,7 @@ offset_left = -72.0
 offset_top = -104.0
 offset_right = 68.0
 offset_bottom = -24.0
-theme_override_fonts/normal_font = ExtResource("2_xa5ym")
+theme_override_fonts/normal_font = ExtResource("2_7oa8u")
 theme_override_font_sizes/normal_font_size = 40
 text = "Gameover
 Better Luck Next Time..."

@@ -14,7 +14,7 @@ func next_level():
 	set_up_area()
 
 func gameover():
-	get_tree().change_scene_to_file("res://assets/scenes/areas/gameover_screen")
+	get_tree().change_scene_to_file("res://assets/scenes/areas/gameover_area.tscn")
 
 func set_up_area():
 	pass

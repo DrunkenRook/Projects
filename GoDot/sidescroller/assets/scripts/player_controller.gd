@@ -3,15 +3,12 @@ class_name PlayerController
 
 @export var speed = 10
 @export var jump_power = 10
-#@export var animation_player : AnimationPlayer
 @export var health = 3
 
 var speed_multiplier = 30
 var jump_multiplier = -30
 var direction = 1
 var direction_tracker = 1
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var alive = true
 
 signal health_change(int)
 
@@ -30,11 +27,11 @@ func _physics_process(delta: float) -> void:
 	if health > 3:
 		health = 3
 	elif health <= 0:
-		gameover()
+		GameManager.gameover()
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	# Get the input direction and handle the movement/deceleration and sprite/collision flips
+	# Get the input direction and handle the movement and sprite/collision flips
 	if direction != 0:
 		direction_tracker = direction
 	direction = Input.get_axis("move_left", "move_right")
@@ -61,11 +58,6 @@ func damage(dmg):
 func heal(amt):
 	health += amt
 	health_change.emit(health)
-
-func gameover():
-	alive = false
-	get_tree().paused = true
-	#play death animation and game over screen?
 
 func on_attack(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
