@@ -601,9 +601,10 @@ height = 51.919754
 radius = 33.941124
 height = 80.61018
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" groups=["Enemy"]]
 position = Vector2(8, -26)
 scale = Vector2(0.58, 0.58)
+collision_layer = 2
 collision_mask = 768
 script = ExtResource("1_0gnoo")
 
@@ -625,8 +626,8 @@ shape = SubResource("CapsuleShape2D_e5tqa")
 debug_color = Color(0.85490197, 0.8901961, 0.07058824, 0.41960785)
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
-position = Vector2(12, 4)
-target_position = Vector2(0, 26)
+position = Vector2(8.620689, 5.1724143)
+target_position = Vector2(0, 41.379314)
 collision_mask = 768
 collide_with_areas = true
 
@@ -647,10 +648,10 @@ scale = Vector2(1.0000004, 1.0000004)
 shape = SubResource("RectangleShape2D_0gnoo")
 debug_color = Color(0.7061581, 0.48595482, 0.14647552, 0.41960785)
 
-[node name="AttackCollisions" type="Area2D" parent="."]
-collision_mask = 768
+[node name="AttackCollisions" type="Area2D" parent="." groups=["Enemy"]]
+collision_mask = 769
 
-[node name="Swipe" type="CollisionShape2D" parent="AttackCollisions" groups=["enemy_attack"]]
+[node name="Swipe" type="CollisionShape2D" parent="AttackCollisions" groups=["Enemy"]]
 position = Vector2(32.000004, -3)
 rotation = 1.3089974
 scale = Vector2(1.0000001, 1.0000001)
@@ -658,7 +659,7 @@ shape = SubResource("CapsuleShape2D_j1mly")
 disabled = true
 debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 
-[node name="SwingUp" type="CollisionShape2D" parent="AttackCollisions" groups=["enemy_attack"]]
+[node name="SwingUp" type="CollisionShape2D" parent="AttackCollisions" groups=["Enemy"]]
 position = Vector2(32.000004, -23)
 rotation = -0.7853982
 shape = SubResource("CapsuleShape2D_0gnoo")
@@ -668,4 +669,4 @@ debug_color = Color(0.92941177, 0.22745098, 0.09803922, 0.7254902)
 [connection signal="timeout" from="CooldownTimer" to="." method="cooldown_finished"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="attack_area_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="attack_area_exited"]
-[connection signal="body_entered" from="AttackCollisions" to="." method="attack_entered"]
+[connection signal="body_entered" from="AttackCollisions" to="." method="player_attacked"]

@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://dm5ncig5hyf1o"
+path="res://.godot/imported/Counting Apples (Black).fnt-f3bd011fe86c56bb7a496fc754e3928c.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Angel Code Format (v1.2)/Counting Apples (Black)/Counting Apples (Black).fnt"
+dest_files=["res://.godot/imported/Counting Apples (Black).fnt-f3bd011fe86c56bb7a496fc754e3928c.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

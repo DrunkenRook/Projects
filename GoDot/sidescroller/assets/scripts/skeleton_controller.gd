@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 60
 @export var gravity = 900
+@export var health = 2
 
 @onready var floor_detector = $FloorDetector
 @onready var wall_detector = $WallDetector
@@ -12,16 +13,22 @@ extends CharacterBody2D
 @onready var skeleton_animator = $SkeletonAnimator
 
 #Sets state based on detectors --------------------------------------Add more states for more attacks?
-enum State { patrol, attack, cooldown }
+enum State { patrol, attack, cooldown, dead }
 var current_state = State.patrol
 var direction = 1
 
 
+
 func _physics_process(delta):
+	#Handles death
+	if current_state == State.dead:
+		#if not is_on_floor():
+			#velocity.y += gravity * delta
+		move_and_slide()
+		return
 	#Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
 	#Handles changing state
 	match current_state:
 		State.patrol:
@@ -57,15 +64,43 @@ func attack(_delta):
 func cooldown(_delta):
 	animation_player.queue("idle")
 
+func take_damage(amt):
+	if current_state == State.dead: 
+		return
+	else:
+		health -= amt
+		if health <= 0:
+			die()
+		else:
+			animation_player.play("hit")
+			current_state = State.cooldown
+
+func die():
+	current_state = State.dead
+	velocity.x = 0
+	animation_player.play("death")
+	$SkeletonBody.set_deferred("disabled", true)
+	$AttackCollisions.set_deferred("monitoring", false)
+	await animation_player.animation_finished
+	queue_free()
+
 func attack_area_entered(body):
-	if body.is_in_group("PlayerHitbox") and current_state != State.cooldown:
+	if body is PlayerController and current_state != State.cooldown:
 		current_state = State.attack
 
 func attack_area_exited(body):
-	if body.is_in_group("PlayerHitbox"):
+	if body is PlayerController:
 		current_state = State.cooldown
 		cooldown_timer.start()
 
 func cooldown_finished():
 	current_state = State.patrol
-	
+
+func player_attacked(body):
+	print_debug("player attacked")
+	if current_state == State.dead:
+		return
+	if body is PlayerController:
+		print_debug("player hit")
+		if body.has_method("damage"):
+			body.damage(1)

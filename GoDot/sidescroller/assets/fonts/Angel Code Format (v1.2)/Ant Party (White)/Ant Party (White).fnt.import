@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://ts6lvwfhymli"
+path="res://.godot/imported/Ant Party (White).fnt-57b39fc0e449ce4dd152c411d58d4695.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Angel Code Format (v1.2)/Ant Party (White)/Ant Party (White).fnt"
+dest_files=["res://.godot/imported/Ant Party (White).fnt-57b39fc0e449ce4dd152c411d58d4695.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

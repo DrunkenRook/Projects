@@ -29,6 +29,8 @@ func _physics_process(delta: float) -> void:
 	#3 is max health
 	if health > 3:
 		health = 3
+	elif health <= 0:
+		gameover()
 	# Add the gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -46,19 +48,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func player_hit(body: Node2D) -> void:
-	if body.is_in_group("enemy_attack") and $IFrames.is_stopped():
-		print_debug("player hit")
-		damage(1)
+func player_hit():
+	print_debug("player hit")
+	damage(1)
 
 func damage(dmg):
 	if health > 0:
 		health -= dmg
-		$IFrames.start()
+		#$IFrames.start()
 		health_change.emit(health)
-	elif health <= 0:
-		print_debug("gameover")
-		gameover()
 
 func heal(amt):
 	health += amt
@@ -68,3 +66,9 @@ func gameover():
 	alive = false
 	get_tree().paused = true
 	#play death animation and game over screen?
+
+func on_attack(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		if body.has_method("take_damage"):
+			body.take_damage(1)
+			print_debug("Enemy hit")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bu167acquwvoy"
+path="res://.godot/imported/Varnished (White).fnt-90bd0040b296201ef8bafc719cc3a920.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Angel Code Format (v1.2)/Varnished (White)/Varnished (White).fnt"
+dest_files=["res://.godot/imported/Varnished (White).fnt-90bd0040b296201ef8bafc719cc3a920.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

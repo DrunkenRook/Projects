@@ -13,6 +13,7 @@ func _ready() -> void:
 	for child in $HealthBar/HBoxContainer.get_children():
 		hearts_list.append(child)
 	print(hearts_list)
+	update_hearts()
 
 func _input(event):
 	#Handles attacks

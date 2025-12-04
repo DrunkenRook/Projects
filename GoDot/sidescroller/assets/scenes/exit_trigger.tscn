@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvrdp6hwpoqxo"]
+
+[ext_resource type="Script" uid="uid://gsggs328grwl" path="res://exit_trigger.gd" id="1_bf6jx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n128j"]
+size = Vector2(18, 42)
+
+[node name="ExitTrigger" type="Area2D" groups=["Exits"]]
+collision_layer = 4
+script = ExtResource("1_bf6jx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2056, -24)
+shape = SubResource("RectangleShape2D_n128j")
+debug_color = Color(0, 0.6313726, 0.14509805, 0.42352942)
+
+[connection signal="body_entered" from="." to="." method="exit_entered"]

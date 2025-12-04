@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://ca5xm0bwumdod"
+path="res://.godot/imported/Sol Schori Thin(White).fnt-8f873c9af67b6b95f48ca2d933b667d2.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Angel Code Format (v1.2)/Sol Schori Thin (White)/Sol Schori Thin(White).fnt"
+dest_files=["res://.godot/imported/Sol Schori Thin(White).fnt-8f873c9af67b6b95f48ca2d933b667d2.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
